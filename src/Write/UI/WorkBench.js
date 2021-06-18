@@ -16,15 +16,25 @@ function toggle(value, set) {
 export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
   const BookID = props.BookID;
+  const [toolListA, setToolListA] = useState([
+    { Type: 'Editor', order:'1'},
+    { Type: 'Character', order: '2'}
+  ]);
+  const [toolListB, setToolListB] = useState([
+    { Type: 'Editor', order:'1'},
+    { Type: 'Character', order:'2'}
+  ]);
   //TabBar Stuff;
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
-  const [listItemsA, ToolA] = Tablist(props.toolListA, props.setToolListA);
-  const [listItemsB, ToolB] = Tablist(props.toolListB, props.setToolListB);
+  const [listItemsA, ToolA] = Tablist(toolListA, setToolListA);
+  const [listItemsB, ToolB] = Tablist(toolListB, setToolListB);
 
   function setView() {
     toggle(multiView, setMultiView);
   }
-  function AddTool() {}
+  function AddTool() {
+
+  }
 
   if (multiView == 0) {
     return (
@@ -106,9 +116,9 @@ function Tab(props) {
   }
 }
 
-function Tablist(Tabs, args) {
+function Tablist(Tabs, list) {
   const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState(<Editor />);
+  const [Tool, setTool] = useState('');
   const listItems = Tabs.map((Tablist, index) => (
     <Tab
       {...{
@@ -116,11 +126,10 @@ function Tablist(Tabs, args) {
         order: index,
         name: Tablist.Type,
         location: Tablist.loc,
-        setList: args.setList,
+        setList: list,
         setTool: setTool,
         setSelect: setSelect,
         selected: selected,
-        Tabs: Tabs
       }}
     />
   ));

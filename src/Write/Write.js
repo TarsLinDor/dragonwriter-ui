@@ -12,17 +12,6 @@ export default function Write(props) {
   const [BookId, setBookId] = useState(db.Books[count].Id);
   //BookBar:
   const [BookMenu, setBookMenu] = useState(0);
-
-  //Toolbar:
-  //Tools:
-  const [toolListA, setToolListA] = useState([
-    { Type: 'Editor', Id:'1'},
-    { Type: 'Character', Id: '2'}
-  ]);
-  const [toolListB, setToolListB] = useState([
-    { Type: 'Editor', Id:'1'},
-    { Type: 'Character', Id:'2'}
-  ]);
   if (BookMenu == 1) {
     return (
       <div className="Write">
@@ -59,10 +48,6 @@ export default function Write(props) {
         <WorkBench
           {...{
             BookID: BookId,
-            toolListA: toolListA,
-            setToolListA: setToolListA,
-            toolListB: toolListB,
-            setToolListB: setToolListB
           }}
         />
       </div>
