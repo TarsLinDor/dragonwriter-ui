@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+:root {
+  --C1: white;
+  --C2: #333844;
+  --C3: lightgrey;
+  --menuFontColor:  rgb(63, 158, 54); //cadetblue;
+  --C4: #6d5940;
+  --C5: #40526d;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--C5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: lato;
+  padding: 0;
+  margin: 0;
+}
+.rotated {
+    transform: rotate(90deg);
+}

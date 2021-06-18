@@ -1,0 +1,42 @@
+{
+  "Books": [
+    {
+      "Id": 1,
+      "Title": "The Blood That Binds",
+      "contents": [
+        {
+          "Type": "Prologue",
+          "Order": 0,
+          "POV": "TarsLinDor",
+          "Content": "It was the Best of times it was the worst of times."
+        },
+                {
+          "Type": "Chapter",
+          "Order": 1,
+          "POV": "Noander",
+          "Content": "On a cold winters night, with winds howling, and snow swirling playfully, the world gave birth to a beast."
+        }
+      ],
+      "Characters":[
+        {
+          "Name":"Noander S. Hook"
+        },
+        {
+          "Name": "KiYan"
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Title": "Nebula Oasis",
+      "contents": [
+        {
+          "Type": "Prologue",
+          "Order": 1,
+          "POV": "Lock",
+          "Content": "Flight is a strange experience to say the least. Its entirely exhausing yet you don't seem to notice."
+        }
+      ]
+    }
+  ]
+}

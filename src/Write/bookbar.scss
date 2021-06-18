@@ -1,0 +1,41 @@
+.BookBar {
+  background-color: var(--C5);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: row;
+  flex-grow: 1;
+  .Book {
+    background-color: var(--C1);
+    margin: 0.5em;
+    padding: 0.5em;
+    font-size: 1.5em;
+    width: 3.5em;
+    height: 5em;
+    display: flex;
+    flex-wrap: row;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.5);
+    a {
+      margin: auto;
+      text-align: center;
+    }
+    p {
+      font-size: 80%;
+    }
+  }
+  button {
+    display: inline-flex;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    padding: 0.15em;
+    background-color: inherit;
+  }
+  button.s1:hover {
+    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.5);
+  }
+  button.s2:hover {
+    color: var(--C1);
+  }
+}

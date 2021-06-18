@@ -1,0 +1,75 @@
+.Tools {
+  background-color: var(--C5);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  .split {
+    width: 1.5px;
+    background-color: var(--C5);
+  }
+  .MainArea {
+    background-color: var(--C5);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: start;
+    .Tool {
+      background-color: var(--C1);
+      display: flex;
+      flex-grow: 1;
+      justify-content: start;
+      z-index: 1;
+    }
+    .TabBar {
+      background-color: var(--C5);
+      display: flex;
+      flex-direction: row;
+      height: 2em;
+      align-items: center;
+      .Selected{
+        background-color: var(--C1);
+        box-shadow: 0 0px 7px 0 rgba(0, 0 , 0, .50);
+        z-index: 1;
+      }
+      .notSelected{
+        background-color: var(--C3);
+        z-index: 0;
+      }
+      .Tab {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 2em;
+        min-width: 5em;
+        //background-color: var(--C3);
+        overflow-x: none;
+        overflow-y: none;
+        a {
+          display: flex;
+          align-items: center;
+          margin: 0em 0.25em;
+        }
+        span {
+          margin: 0.1em 0.25em 0 0.25em;
+          display: flex;
+          align-items: center;
+          font-size: 1.15em;
+        }
+      }
+    }
+  }
+  .rotated {
+    transform: rotate(90deg);
+    border: none;
+    outline: none;
+    background-color: inherit;
+    width: 2em;
+    height: 2em;
+    margin-left: auto;
+    margin-right: 0.25em;
+    padding: 0;
+  }
+  .rotated:hover {
+    color: white;
+  }
+}

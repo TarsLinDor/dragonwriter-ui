@@ -1,0 +1,34 @@
+.toolbar {
+  background-color: var(--C4);
+  color: var(black);
+  padding: 0.15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  width: 2em;
+  .rows {
+    display: flex;
+    flex-direction: column;
+  }
+  button {
+    background-color: inherit;
+    color: var(--ToolBar);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 100%;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    margin-bottom: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button:hover {
+    background-color: var(--button_color);
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+  }
+}

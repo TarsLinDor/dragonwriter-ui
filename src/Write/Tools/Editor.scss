@@ -1,0 +1,236 @@
+@import url('https://cdn.quilljs.com/1.3.6/quill.snow.css');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+
+.editor {
+  box-shadow: 0 -4px 7px 0 rgba(0, 0, 0, 0);
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  background-color: white;
+  .tableofcontents {
+    min-width: 10em;
+    max-width: 15em;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    border-right: solid lightgrey 1px;
+    flex-grow: 1;
+    margin: 0.25em 0em 0.25em 0em;
+    .title {
+      display: flex;
+      padding: 0 0px 5px 0px;
+      margin: 0 5px;
+      border-bottom: solid lightgrey 1px;
+    }
+    .contents {
+      //padding-left: 5px;
+      flex-grow: 1;
+      overflow-y: scroll;
+      font-family: 'Merriweather', serif;
+      font-size: 14px;
+      .Chapter {
+        padding: 0 .0em 0 .5em;
+        display: flex;
+        //flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        span{
+          margin-left: auto;
+        }
+      }
+      .Chapter:hover{background-color: whitesmoke}
+      .Part {
+        padding: 0 .0em 0 .25em;
+        display: flex;
+        //flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        span{
+          margin-left: auto;
+        }
+      }
+      .Part:hover{background-color: whitesmoke}
+    }
+    .add-contents {
+      border-top: solid rgb(202, 202, 202) 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: -0.25em 0.25em;
+      .word-count {
+        margin-left: 5px;
+        font-size: 14px;
+        font-family: 'Merriweather', serif;
+        //font-weight: bold;
+      }
+    }
+  }
+
+  .TextEditor {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    //font-family: 'Merriweather', serif;
+    .top-toolbar {
+      margin: 0 5px;
+      padding: 5px 5px 4px 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: top;
+      justify-content: space-between;
+      border-bottom: solid 1px lightgrey;
+      .content-type {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        a {
+          font-family: 'Merriweather', serif;
+          font-size: 14px;
+        }
+        span {
+          margin-right: auto;
+        }
+        //position: absolute;
+      }
+      .draft-menu {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        a {
+          font-family: 'Merriweather', serif;
+          font-size: 14px;
+        }
+        span {
+          margin-left: auto;
+        }
+      }
+      .content-title {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        span {
+          margin: auto;
+        }
+        p {
+          font-size: 100%;
+          font-weight: bold;
+          outline: none;
+          text-align: center;
+        }
+      }
+    }
+    p:empty:before {
+      content: attr(placeholder);
+      pointer-events: none;
+      display: block; 
+      color: lightgray;
+    }
+    .quill-editor {
+      flex: 1;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #toolbar {
+      flex: 1;
+      flex-grow: 1;
+      background-color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+      margin: 0 0.25em;
+      padding: 0.25em 0;
+      border-top: solid rgb(202, 202, 202) 1px;
+      font-family: 'Merriweather', serif;
+      button {
+        font-size: 12px;
+      }
+      button:hover {
+        background-color: inherit;
+      }
+      a {
+        font-size: 14px;
+        //padding: 0 .5em;
+      }
+      div {
+        margin: auto;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .ql-align-center.ql-snow {
+      border-style: none;
+      text-align: center;
+    }
+
+    .ql-container.ql-snow {
+      //position: relative;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      outline: none;
+      border: none;
+      font-family: 'Merriweather', serif;
+      margin: 1ex auto;
+      width: 100%;
+      max-width: 55em;
+      //background-color: grey;
+    }
+
+    .ql-container.ql-snow p {
+      text-indent: 20px;
+      padding: 0px 0px 5px 0px;
+    }
+
+    .ql-align-center {
+      text-align: center;
+    }
+  }
+
+  button {
+    background-color: inherit;
+    color: black;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 100%;
+    width: 1.6em;
+    height: 1.6em;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: lightgrey;
+  }
+  .Drafts {
+    margin: 0.25em 0.25em 0.25em 0.25em;
+    border-left: solid lightgrey 1px;
+    display: flex;
+    flex-direction: column;
+    .title {
+      display: flex;
+      padding: 0 5px 5px 5px;
+      margin: 0 5px;
+      border-bottom: solid lightgrey 1px;
+    }
+    .draft-list {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row;
+      margin: auto;
+    }
+    .new-draft {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-top: solid lightgrey 1px;
+      margin: 0em 0.25em -0.25em 0.25em;
+    }
+  }
+}
