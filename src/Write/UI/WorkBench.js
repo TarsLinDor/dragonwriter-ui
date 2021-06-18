@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Tools.scss';
-import ToolBar from './Tools/ToolBar.js';
+import './WorkBench.scss';
+import ToolBar from './ToolBar.js';
 import Editor from './Tools/Editor.js';
 import Character from './Tools/Character.js';
 //UI functions

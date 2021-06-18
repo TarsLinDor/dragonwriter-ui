@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './bookbar.scss';
-const db = require('../database.json');
+import './BooksMenu.scss';
+const db = require('../../database.json');
 function toggle(value, set) {
   if (value == 0) {
     set(1);
@@ -9,17 +9,19 @@ function toggle(value, set) {
   }
 }
 
-export default function BookMenu(props) {
+export default function BooksMenu(props) {
   const [books, setbooks] = useState(db.Books);
   var listItems = books.map((books, index) => (
     <Book
-      {...{key:books.Id,
-      title: books.Title,
-      setBookTitle: props.setBookTitle,
-      setBookId: props.setBookId,
-      BookMenu: props.BookMenu,
-      setBookMenu: props.setBookMenu,
-      Order:index}}
+      {...{
+        key: books.Id,
+        title: books.Title,
+        setBookTitle: props.setBookTitle,
+        setBookId: props.setBookId,
+        BookMenu: props.BookMenu,
+        setBookMenu: props.setBookMenu,
+        Order: index
+      }}
     />
   ));
   function newbook() {

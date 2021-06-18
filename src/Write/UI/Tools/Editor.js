@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useQuill } from 'react-quilljs';
 import './Editor.scss';
 var wordcount = require('word-count');
-const db = require('../../database.json');
+const db = require('../../../database.json');
 
 export default function Editor(props) {
   //bookId , item_select function

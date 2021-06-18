@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 const db = require('../database.json');
-import NavBar from './UI/navbar.js';
+import NavBar from './UI/NavBar.js';
 import WorkBench from './UI/WorkBench.js';
-import BookMenu from './UI/BookMenu.js';
+import BooksMenu from './UI/BooksMenu.js';
 import './Write.scss';
 
 export default function Write(props) {
@@ -34,7 +34,7 @@ export default function Write(props) {
             setBookMenu: setBookMenu
           }}
         />
-        <BookMenu
+        <BooksMenu
           {...{
             BookMenu: BookMenu,
             setBookTitle: setBookTitle,

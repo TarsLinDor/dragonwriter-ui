@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './navbar.scss';
+import './NavBar.scss';
 function toggle(value, set) {
   if (value == 0) {
     set(1);
