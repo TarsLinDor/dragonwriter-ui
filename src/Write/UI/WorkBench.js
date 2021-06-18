@@ -18,24 +18,8 @@ export default function WorkBench(props) {
   const BookID = props.BookID;
   //TabBar Stuff;
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
-  const [tool_A, setTool_A] = useState(<Editor />);
-  const [selectedToolA, setSelectedToolA] = useState(0);
-  const [selectedToolB, setSelectedToolB] = useState(0);
-  const [tool_B, setTool_B] = useState(<Character />);
-
-  const listItems = Tablist(props.toolListA, {
-    setTool: setTool_A,
-    setList: props.setToolListA,
-    setSelect: setSelectedToolA,
-    selected: selectedToolA
-  });
-
-  const listItems2 = Tablist(props.toolListB, {
-    setTool: setTool_B,
-    setList: props.setToolListB,
-    setSelect: setSelectedToolB,
-    selected: selectedToolB
-  });
+  const [listItemsA, ToolA] = Tablist(props.toolListA, props.setToolListA);
+  const [listItemsB, ToolB] = Tablist(props.toolListB, props.setToolListB);
 
   function setView() {
     toggle(multiView, setMultiView);
@@ -48,12 +32,12 @@ export default function WorkBench(props) {
         <ToolBar AddTool={AddTool} />
         <div className="MainArea">
           <div className="TabBar">
-            {listItems}
+            {listItemsA}
             <button className="rotated" onClick={setView}>
               <span className="material-icons">splitscreen</span>
             </button>
           </div>
-          {tool_A}
+          {ToolA}
         </div>
       </div>
     );
@@ -62,18 +46,18 @@ export default function WorkBench(props) {
       <div className="Tools">
         <ToolBar AddTool={AddTool} />
         <div className="MainArea">
-          <div className="TabBar">{listItems}</div>
-          {tool_A}
+          <div className="TabBar">{listItemsA}</div>
+          {ToolA}
         </div>
         <div className="split" />
         <div className="MainArea">
           <div className="TabBar">
-            {listItems2}
+            {listItemsB}
             <button className="rotated" onClick={setView}>
               <span className="material-icons">splitscreen</span>
             </button>
           </div>
-          {tool_B}
+          {ToolB}
         </div>
       </div>
     );
@@ -123,6 +107,8 @@ function Tab(props) {
 }
 
 function Tablist(Tabs, args) {
+  const [selected, setSelect] = useState(0);
+  const [Tool, setTool] = useState(<Editor />);
   const listItems = Tabs.map((Tablist, index) => (
     <Tab
       {...{
@@ -131,12 +117,12 @@ function Tablist(Tabs, args) {
         name: Tablist.Type,
         location: Tablist.loc,
         setList: args.setList,
-        setTool: args.setTool,
-        setSelect: args.setSelect,
-        selected: args.selected,
+        setTool: setTool,
+        setSelect: setSelect,
+        selected: selected,
         Tabs: Tabs
       }}
     />
   ));
-  return listItems;
+  return [listItems, Tool];
 }
