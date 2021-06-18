@@ -26,12 +26,26 @@
       flex-direction: row;
       height: 2em;
       align-items: center;
-      .Selected{
+      .rotated {
+        transform: rotate(90deg);
+        border: none;
+        outline: none;
+        background-color: inherit;
+        width: 2em;
+        height: 2em;
+        margin-left: auto;
+        margin-right: 0.25em;
+        padding: 0;
+      }
+      .rotated:hover {
+        color: white;
+      }
+      .Selected {
         background-color: var(--C1);
-        box-shadow: 0 0px 7px 0 rgba(0, 0 , 0, .50);
+        box-shadow: 0 0px 7px 0 rgba(0, 0, 0, 0.5);
         z-index: 1;
       }
-      .notSelected{
+      .notSelected {
         background-color: var(--C3);
         z-index: 0;
       }
@@ -57,19 +71,5 @@
         }
       }
     }
-  }
-  .rotated {
-    transform: rotate(90deg);
-    border: none;
-    outline: none;
-    background-color: inherit;
-    width: 2em;
-    height: 2em;
-    margin-left: auto;
-    margin-right: 0.25em;
-    padding: 0;
-  }
-  .rotated:hover {
-    color: white;
   }
 }
