@@ -15,43 +15,27 @@ function toggle(value, set) {
 
 export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
+  const BookID = props.BookID;
   //TabBar Stuff;
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
   const [tool_A, setTool_A] = useState(<Editor />);
   const [selectedToolA, setSelectedToolA] = useState(0);
   const [selectedToolB, setSelectedToolB] = useState(0);
   const [tool_B, setTool_B] = useState(<Character />);
-  const BookID = props.BookID;
-  var toolListA = props.toolListA;
-  var listItems = toolListA.map((toolListA, index) => (
-    <Tab
-      {...{
-        key: toolListA.Type,
-        name: toolListA.Type,
-        Order: index,
-        setToolList: props.setToolListA,
-        ToolList: props.toolListA,
-        setTool: setTool_A,
-        setSelect: setSelectedToolA,
-        selected: selectedToolA
-      }}
-    />
-  ));
-  var toolListB = props.toolListB;
-  var listItems2 = toolListB.map((toolListB, index) => (
-    <Tab
-      {...{
-        key: toolListB[index],
-        name: toolListB.Type,
-        Order: index,
-        setToolList: props.setToolListB,
-        ToolList: props.toolListB,
-        setTool: setTool_B,
-        setSelect: setSelectedToolB,
-        selected: selectedToolB
-      }}
-    />
-  ));
+
+  const listItems = Tablist(props.toolListA, {
+    setTool: setTool_A,
+    setList: props.setToolListA,
+    setSelect: setSelectedToolA,
+    selected: selectedToolA
+  });
+
+  const listItems2 = Tablist(props.toolListB, {
+    setTool: setTool_B,
+    setList: props.setToolListB,
+    setSelect: setSelectedToolB,
+    selected: selectedToolB
+  });
 
   function setView() {
     toggle(multiView, setMultiView);
@@ -98,13 +82,13 @@ export default function WorkBench(props) {
 
 function Tab(props) {
   function remove() {
-    props.setToolList(props.ToolList.splice(props.key));
-    if (props.ToolList.length <= 1) {
-      props.setTool('');
+    props.setTool(props.Tabs.splice(props.order));
+    if (props.Tabs.length <= 1) {
+      props.setList('');
     }
   }
   function select() {
-    props.setSelect(props.Order);
+    props.setSelect(props.order);
     if (props.name == 'Editor') {
       props.setTool(<Editor {...props.location} />);
     }
@@ -113,7 +97,7 @@ function Tab(props) {
     }
   }
 
-  if (props.selected == props.Order) {
+  if (props.selected == props.order) {
     return (
       <div className="Tab Selected">
         <a onClick={select}>
@@ -138,4 +122,21 @@ function Tab(props) {
   }
 }
 
-
+function Tablist(Tabs, args) {
+  const listItems = Tabs.map((Tablist, index) => (
+    <Tab
+      {...{
+        key: index,
+        order: index,
+        name: Tablist.Type,
+        location: Tablist.loc,
+        setList: args.setList,
+        setTool: args.setTool,
+        setSelect: args.setSelect,
+        selected: args.selected,
+        Tabs: Tabs
+      }}
+    />
+  ));
+  return listItems;
+}

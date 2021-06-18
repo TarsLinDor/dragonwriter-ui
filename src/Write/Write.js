@@ -17,7 +17,7 @@ export default function Write(props) {
   //Tools:
   const [toolListA, setToolListA] = useState([
     { Type: 'Editor', Id:'1'},
-    { Type: 'Character', Id:'2' }
+    { Type: 'Character', Id: '2'}
   ]);
   const [toolListB, setToolListB] = useState([
     { Type: 'Editor', Id:'1'},
