@@ -6,7 +6,7 @@ const db = require('../../../database.json');
 
 export default function Characters(props) {
   //bookId , item_select function
-  return 'Characters';
+  return <div className="Tool">Characters</div>;
 }
 //left
 function TableOfContents(props) {}

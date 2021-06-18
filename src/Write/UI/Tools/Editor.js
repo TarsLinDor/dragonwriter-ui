@@ -6,7 +6,7 @@ const db = require('../../../database.json');
 
 export default function Editor(props) {
   //bookId , item_select function
-  return 'Editor';
+  return <div className="Tool">Editor</div>;
 }
 
 //left

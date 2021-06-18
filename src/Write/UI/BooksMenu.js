@@ -31,7 +31,7 @@ export default function BooksMenu(props) {
 
   if (props.BookMenu == 1) {
     return (
-      <div className="BookBar">
+      <div className="BooksMenu">
         {listItems}
         <div onClick={newbook} className="Book">
           <a className="material-icons">add</a>

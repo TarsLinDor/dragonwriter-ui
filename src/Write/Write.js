@@ -16,12 +16,12 @@ export default function Write(props) {
   //Toolbar:
   //Tools:
   const [toolListA, setToolListA] = useState([
-    { Type: 'Editor' },
-    { Type: 'Character' }
+    { Type: 'Editor', Id:'1'},
+    { Type: 'Character', Id:'2' }
   ]);
   const [toolListB, setToolListB] = useState([
-    { Type: 'Character' },
-    { Type: 'Editor' }
+    { Type: 'Editor', Id:'1'},
+    { Type: 'Character', Id:'2'}
   ]);
   if (BookMenu == 1) {
     return (

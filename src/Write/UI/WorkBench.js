@@ -17,10 +17,10 @@ export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
   //TabBar Stuff;
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
-  const [tool_A, setTool_A] = useState(<Tool {...{ tool: <Editor /> }} />);
+  const [tool_A, setTool_A] = useState(<Editor />);
   const [selectedToolA, setSelectedToolA] = useState(0);
   const [selectedToolB, setSelectedToolB] = useState(0);
-  const [tool_B, setTool_B] = useState(<Tool {...{ tool: <Character /> }} />);
+  const [tool_B, setTool_B] = useState(<Character />);
   const BookID = props.BookID;
   var toolListA = props.toolListA;
   var listItems = toolListA.map((toolListA, index) => (
@@ -41,7 +41,7 @@ export default function WorkBench(props) {
   var listItems2 = toolListB.map((toolListB, index) => (
     <Tab
       {...{
-        key: toolListB.Type,
+        key: toolListB[index],
         name: toolListB.Type,
         Order: index,
         setToolList: props.setToolListB,
@@ -98,7 +98,7 @@ export default function WorkBench(props) {
 
 function Tab(props) {
   function remove() {
-    props.setToolList(props.ToolList.splice(props.Order, props.Order));
+    props.setToolList(props.ToolList.splice(props.key));
     if (props.ToolList.length <= 1) {
       props.setTool('');
     }
@@ -106,10 +106,10 @@ function Tab(props) {
   function select() {
     props.setSelect(props.Order);
     if (props.name == 'Editor') {
-      props.setTool(<Tool {...{ tool: <Editor /> }} />);
+      props.setTool(<Editor {...props.location} />);
     }
     if (props.name == 'Character') {
-      props.setTool(<Tool {...{ tool: <Character /> }} />);
+      props.setTool(<Character {...props.location} />);
     }
   }
 
@@ -138,6 +138,4 @@ function Tab(props) {
   }
 }
 
-function Tool(props) {
-  return <div className="Tool">{props.tool}</div>;
-}
+
