@@ -3,10 +3,18 @@ import './Tools.scss';
 import ToolBar from './Tools/ToolBar.js';
 import Editor from './Tools/Editor.js';
 import Character from './Tools/Character.js';
-import { toggle } from './UI.js';
+//UI functions
+function toggle(value, set) {
+  if (value == 0) {
+    set(1);
+  } else {
+    set(0);
+  }
+}
 //UI Specific Functions
 
-export default function Tools(props) {
+export default function WorkBench(props) {
+  //This is the MainArea where all the tools are located.
   //TabBar Stuff;
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
   const [tool_A, setTool_A] = useState(<Tool {...{ tool: <Editor /> }} />);

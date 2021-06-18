@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './bookbar.scss';
 const db = require('../database.json');
-import { toggle } from './UI.js';
+function toggle(value, set) {
+  if (value == 0) {
+    set(1);
+  } else {
+    set(0);
+  }
+}
 
-export default function BookBar(props) {
+export default function BookMenu(props) {
   const [books, setbooks] = useState(db.Books);
   var listItems = books.map((books, index) => (
     <Book

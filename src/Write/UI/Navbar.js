@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './navbar.scss';
-import { toggle } from './UI.js';
+function toggle(value, set) {
+  if (value == 0) {
+    set(1);
+  } else {
+    set(0);
+  }
+}
 
 export default function NavBar(props) {
   function bookmenu() {
