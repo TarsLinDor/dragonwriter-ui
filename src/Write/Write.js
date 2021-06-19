@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import './Write.scss';
 const db = require('../database.json');
 import NavBar from './UI/NavBar.js';
 import WorkBench from './UI/WorkBench.js';
 import BooksMenu from './UI/BooksMenu.js';
-import './Write.scss';
 
 export default function Write(props) {
   //Navbar:
@@ -47,7 +47,7 @@ export default function Write(props) {
         />
         <WorkBench
           {...{
-            BookID: BookId,
+            BookID: BookId
           }}
         />
       </div>

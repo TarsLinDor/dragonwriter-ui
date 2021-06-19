@@ -17,14 +17,20 @@ export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
   const BookID = props.BookID;
   const [toolListA, setToolListA] = useState([
-    { Type: 'Editor', order:'1'},
-    { Type: 'Character', order: '2'}
+    { Type: 'Editor', order: 1, location: 'Chapter 1' },
+    { Type: 'Character', order: 2, location: 'Bridge Four' },
+    { Type: 'WorldBuilder', order: 3, location: 'Roshar' },
+    { Type: 'BookInfo', order: 4, location: 'Title' },
+    { Type: 'Feedback', order: 5, location: '@user: Thory' },
+    { Type: 'Outline', order: 6, location: 'Act 2' },
+    { Type: 'Print', order: 7, location: 'epub' },
+    { Type: 'Settings', order: 8, location: 'settings' },
   ]);
   const [toolListB, setToolListB] = useState([
-    { Type: 'Editor', order:'1'},
-    { Type: 'Character', order:'2'}
+    { Type: 'Editor', order: '1', location: 'Chapter 1' },
+    { Type: 'Character', order: '2', location: 'Chapter 1' }
   ]);
-  //TabBar Stuff;
+  //TabBar and ToolView
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
   const [listItemsA, ToolA] = Tablist(toolListA, setToolListA);
   const [listItemsB, ToolB] = Tablist(toolListB, setToolListB);
@@ -32,9 +38,7 @@ export default function WorkBench(props) {
   function setView() {
     toggle(multiView, setMultiView);
   }
-  function AddTool() {
-
-  }
+  function AddTool() {}
 
   if (multiView == 0) {
     return (
@@ -75,6 +79,7 @@ export default function WorkBench(props) {
 }
 
 function Tab(props) {
+  const location = props.location;
   function remove() {
     props.setTool(props.Tabs.splice(props.order));
     if (props.Tabs.length <= 1) {
@@ -84,18 +89,27 @@ function Tab(props) {
   function select() {
     props.setSelect(props.order);
     if (props.name == 'Editor') {
-      props.setTool(<Editor {...props.location} />);
+      props.setTool(<Editor {...location} />);
     }
     if (props.name == 'Character') {
-      props.setTool(<Character {...props.location} />);
+      props.setTool(<Character {...location} />);
     }
   }
+
+  var iconName = setIcon(props.name)
+
+  const icon = (
+    <span className="material-icons" onClick={remove}>
+      {iconName}
+    </span>
+  );
 
   if (props.selected == props.order) {
     return (
       <div className="Tab Selected">
         <a onClick={select}>
-          <b>{props.name}:</b>&nbsp;{props.loc}
+          {icon}
+          <p>{location}</p>
         </a>
         <span className="material-icons" onClick={remove}>
           close
@@ -105,8 +119,9 @@ function Tab(props) {
   } else {
     return (
       <div className="Tab notSelected" onClick={select}>
-        <a>
-          <b>{props.name}:</b>&nbsp;{props.loc}
+        <a onClick={select}>
+          {icon}
+          <p>{location}</p>
         </a>
         <span className="material-icons" onClick={remove}>
           close
@@ -118,20 +133,47 @@ function Tab(props) {
 
 function Tablist(Tabs, list) {
   const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState('');
+  const [Tool, setTool] = useState(<Editor {...Tabs.location} />);
   const listItems = Tabs.map((Tablist, index) => (
     <Tab
       {...{
         key: index,
         order: index,
-        name: Tablist.Type,
-        location: Tablist.loc,
+        name: Tabs[index].Type,
+        location: Tabs[index].location,
         setList: list,
         setTool: setTool,
         setSelect: setSelect,
-        selected: selected,
+        selected: selected
       }}
     />
   ));
   return [listItems, Tool];
+}
+
+function setIcon(icon){
+  if (icon == 'Character') {
+    return 'group';
+  }
+  else if(icon == 'WorldBuilder') {
+    return 'filter_hdr';
+  }
+  else if(icon == 'BookInfo') {
+    return 'bookmark';
+  }
+  else if(icon == 'Outline') {
+    return 'bubble_chart';
+  }
+  else if(icon == 'Feedback') {
+    return 'cached';
+  }
+    else if(icon == 'Print') {
+    return 'print';
+  }
+  else if (icon == 'Settings'){
+    return 'settings';
+  }
+  else {
+    return 'edit';
+  }
 }

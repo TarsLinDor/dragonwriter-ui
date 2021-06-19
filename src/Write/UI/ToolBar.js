@@ -8,7 +8,7 @@ export default function ToolBar(props) {
           <span className="material-icons">bookmark</span>
         </button>
         <button >
-          <span className="material-icons">mode_edit</span>
+          <span className="material-icons">edit</span>
         </button>
         <button >
           <span className="material-icons">filter_hdr</span>
