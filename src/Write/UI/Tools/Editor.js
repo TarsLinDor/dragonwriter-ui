@@ -168,7 +168,7 @@ function Quill(props) {
   const theme = 'snow';
   var toolbar = 'Toolbar' + Math.floor();
   const modules = { toolbar: '#'+toolbar};
-  const placeholder = "\t  Oh! the places you'll go...";
+  const placeholder = "\t\t   Oh! the places you'll go...";
   const formats = ['bold', 'italic', 'underline', 'strike', 'align'];
   const { quill, quillRef } = useQuill({
     theme,
