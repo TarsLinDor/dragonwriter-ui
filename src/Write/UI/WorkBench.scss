@@ -3,15 +3,19 @@
   display: flex;
   flex-direction: row;
   flex-grow: 1;
+  
   .split {
-    width: 1.5px;
-    background-color: var(--C5);
+    width: 1px;
+    z-index: 2;
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .5);
+    cursor: e-resize;
   }
   .MainArea {
     background-color: var(--C5);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    z-index: 1;
     justify-content: start;
     .Tool {
       background-color: var(--C1);
@@ -48,6 +52,7 @@
       .notSelected {
         background-color: var(--C3);
         z-index: 0;
+        box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.5);
       }
       .Tab {
         display: flex;
