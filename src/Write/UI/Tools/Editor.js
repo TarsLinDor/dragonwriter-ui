@@ -3,7 +3,7 @@ import { useQuill } from 'react-quilljs';
 import './Editor.scss';
 var wordcount = require('word-count');
 const db = require('../../../database.json');
-
+/*
 export default function Editor(props) {
   //bookId , item_select function
   return <div className="Tool">Editor</div>;
@@ -21,7 +21,7 @@ function Quill(props) {}
 function DraftList(props) {}
 function DraftView() {}
 
-/*
+*/
 function Editor(props) {
   const [content, setContent] = useState(
     <div>
@@ -253,4 +253,4 @@ function Part(props) {
 }
 
 export default Editor;
-*/
+

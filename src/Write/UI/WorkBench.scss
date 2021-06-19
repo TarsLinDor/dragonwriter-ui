@@ -7,7 +7,7 @@
   .split {
     width: 1px;
     z-index: 2;
-    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 0px 5px 0 rgba(0, 0, 0, .1);
     cursor: e-resize;
   }
   .MainArea {
@@ -17,12 +17,14 @@
     flex-grow: 1;
     z-index: 1;
     justify-content: start;
+    width: 50%;
     .Tool {
       background-color: var(--C1);
       display: flex;
       flex-grow: 1;
       justify-content: start;
       z-index: 1;
+      
     }
     .TabBar {
       background-color: var(--C5);
