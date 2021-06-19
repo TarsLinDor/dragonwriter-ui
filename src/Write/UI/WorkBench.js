@@ -85,12 +85,9 @@ export default function WorkBench(props) {
 }
 
 function Tab(props) {
-  const location = props.location;
+  const L = props.Tabs.length;
   function remove() {
-    props.setTool(props.Tabs.splice(props.order));
-    if (props.Tabs.length <= 1) {
-      props.setList('');
-    }
+    props.setList(props.Tabs.slice(props.order));
   }
   function select() {
     props.setSelect(props.order);
@@ -105,10 +102,9 @@ function Tab(props) {
   return (
     <div className={sel}>
       <a onClick={select}>
-        <span className="material-icons">
-          {setIcon(props.name)}
-        </span>
-        <p>{location}</p>
+        <span className="material-icons">{setIcon(props.name)}</span>
+        <p>{props.location}</p>
+        <p>{L}</p>
       </a>
       <span className="material-icons" onClick={remove}>
         close
