@@ -104,7 +104,6 @@ function Tab(props) {
       <a onClick={select}>
         <span className="material-icons">{setIcon(props.name)}</span>
         <p>{props.location}</p>
-        <p>{L}</p>
       </a>
       <span className="material-icons" onClick={remove}>
         close

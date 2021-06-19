@@ -132,31 +132,31 @@ function TextEditor(props) {
     <div className="TextEditor">
       <div className="top-toolbar">
         <div className="content-type">
-          <span>
+          <div>
             <i className="fas fa-list-ul" onClick={props.toggletoc} />{' '}
             <a>
               &nbsp;
-              {props.view.type}: {props.view.order}
+              {props.view.type} {props.view.order}:&nbsp;<p contentEditable='True' placeholder='Title'>{props.title}</p>
             </a>
-          </span>
+          </div>
         </div>
-        <div className="content-title">
-          <span>
+        {/*<div className="content-title">
+          <div>
             <p
               contentEditable="true"
               placeholder="Title"
               content={props.view.title}
             />
-          </span>
-        </div>
+          </div>
+        </div>*/}
         <div className="draft-menu">
-          <span>
+          <div>
             <a>{props.view.draftnum} &nbsp;</a>
             <i
               className="fas fa-drafting-compass"
               onClick={props.toggledraft}
             />
-          </span>
+          </div>
         </div>
       </div>
       <Quill content={props.content} save={props.SaveContents} />
@@ -166,7 +166,8 @@ function TextEditor(props) {
 function Quill(props) {
   const [counter, setCounter] = useState(0);
   const theme = 'snow';
-  const modules = { toolbar: '#toolbar' };
+  var toolbar = 'Toolbar' + Math.floor();
+  const modules = { toolbar: '#'+toolbar};
   const placeholder = "\t  Oh! the places you'll go...";
   const formats = ['bold', 'italic', 'underline', 'strike', 'align'];
   const { quill, quillRef } = useQuill({
@@ -190,7 +191,7 @@ function Quill(props) {
   return (
     <div className="quill-editor">
       <div ref={quillRef} />
-      <div id="toolbar">
+      <div className = 'QuillToolbar' id={toolbar}>
         <a>
           <span>{counter} words</span>
         </a>
@@ -253,4 +254,3 @@ function Part(props) {
 }
 
 export default Editor;
-

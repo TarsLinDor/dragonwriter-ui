@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root {
-  --C1: white;
+  --C1: whitesmoke;
   --C2: #333844;
   --C3: lightgrey;
-  --menuFontColor:  rgb(63, 158, 54); //cadetblue;
+  --menuFontColor: rgb(63, 158, 54); //cadetblue;
   --C4: #6d5940;
   --C5: #40526d;
 }
 
-::-webkit-scrollbar {
-  display: none;
+/*::-webkit-scrollbar {
+  display: ;
+}*/
+.rotated {
+  transform: rotate(90deg);
 }
-
-body {
+#root {
   background-color: var(--C5);
   position: absolute;
   top: 0;
@@ -23,7 +25,5 @@ body {
   font-family: lato;
   padding: 0;
   margin: 0;
-}
-.rotated {
-    transform: rotate(90deg);
+  max-height: 100vh;
 }
