@@ -23,7 +23,7 @@
       display: flex;
       flex-grow: 1;
       justify-content: start;
-      z-index: 2;
+      z-index: 1;
       
     }
     .TabBar {
@@ -32,7 +32,7 @@
       flex-direction: row;
       height: 2em;
       align-items: center;
-      z-index: 0;
+      z-index: -1;
       .rotated {
         transform: rotate(90deg);
         border: none;
