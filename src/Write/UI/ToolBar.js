@@ -16,7 +16,7 @@ export default function ToolBar(props) {
         <button>
           <i class="bi bi-people" />
         </button>
-        <button className="rotated">
+        <button>
           <i class="bi bi-snow3" />
         </button>
         <button>
