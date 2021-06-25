@@ -1,40 +1,56 @@
 {
-  "Books": [
+  "books": [
     {
-      "Id": 1,
-      "Title": "The Blood That Binds",
-      "contents": [
+      "title": "The Blood That Binds",
+      "id": 1,
+      "editor": [
         {
-          "Type": "Prologue",
-          "Order": 0,
-          "POV": "TarsLinDor",
-          "Content": "It was the Best of times it was the worst of times."
-        },
+          "type": "chapter",
+          "order": 1,
+          "title": [
+            {
+              "type": "paragraph",
+              "children": [
                 {
-          "Type": "Chapter",
-          "Order": 1,
-          "POV": "Noander",
-          "Content": "On a cold winters night, with winds howling, and snow swirling playfully, the world gave birth to a beast."
-        }
-      ],
-      "Characters":[
-        {
-          "Name":"Noander S. Hook"
+                  "text": " The Meeting"
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "The amphitheater was stuffed to the brim with hollering Dueling enthusiasts. \"This is the place,\" he said."
+                }
+              ]
+            }
+          ]
         },
         {
-          "Name": "KiYan"
-        }
-      ]
-    },
-    {
-      "Id": 2,
-      "Title": "Nebula Oasis",
-      "contents": [
-        {
-          "Type": "Prologue",
-          "Order": 1,
-          "POV": "Lock",
-          "Content": "Flight is a strange experience to say the least. Its entirely exhausing yet you don't seem to notice."
+          "type": "Prologue",
+          "order": 0,
+          "title": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": " The Last of the Free"
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": " On a cold winters night, with winds howling, and snow swirling playfully, the world gave birth to a beast."
+                }
+              ]
+            }
+          ]
         }
       ]
     }

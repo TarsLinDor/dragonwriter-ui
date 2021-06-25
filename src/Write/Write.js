@@ -8,8 +8,8 @@ import BooksMenu from './UI/BooksMenu.js';
 export default function Write(props) {
   //Navbar:
   const count = Object.keys(db).length; //loads last book on default.
-  const [BookTitle, setBookTitle] = useState(db.Books[count].Title);
-  const [BookId, setBookId] = useState(db.Books[count].Id);
+  const [BookTitle, setBookTitle] = useState(db.books[count].title);
+  const [BookId, setBookId] = useState(db.books[count].id);
   //BookBar:
   const [BookMenu, setBookMenu] = useState(0);
   if (BookMenu == 1) {
