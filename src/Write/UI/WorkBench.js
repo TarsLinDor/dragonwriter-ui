@@ -48,8 +48,8 @@ export default function WorkBench(props) {
         <div className="MainArea">
           <div className="TabBar">
             {listItemsA}
-            <button className="rotated" onClick={setView}>
-              <span className="material-icons">splitscreen</span>
+            <button>
+              <i onClick={setView} className="bi bi-layout-split" />
             </button>
           </div>
           {ToolA}
@@ -68,8 +68,8 @@ export default function WorkBench(props) {
         <div className="MainArea">
           <div className="TabBar">
             {listItemsB}
-            <button className="rotated" onClick={setView}>
-              <span className="material-icons">splitscreen</span>
+            <button>
+              <i onClick={setView} className="bi bi-layout-split" />
             </button>
           </div>
           {ToolB}

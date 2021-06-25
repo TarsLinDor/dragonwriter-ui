@@ -32,18 +32,16 @@
       height: 1.75em;
       align-items: center;
       z-index: -1;
-      .rotated {
-        transform: rotate(90deg);
+      button {
         border: none;
         outline: none;
         background-color: inherit;
-        width: 2em;
-        height: 2em;
+        font-size: 1.0em;
         margin-left: auto;
         margin-right: 0.25em;
         padding: 0;
       }
-      .rotated:hover {
+      button:hover {
         color: white;
       }
       .Selected {

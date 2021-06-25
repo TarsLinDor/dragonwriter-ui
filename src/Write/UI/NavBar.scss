@@ -1,5 +1,5 @@
 .NavBar {
-    height: 2em;
+    height: 1.75em;
     padding: 0.05em;
     background-color: var(--C2);
     display: flex;
@@ -36,6 +36,10 @@
       border-radius: 50%;
       padding: 0.15em;
       background-color: inherit;
+      i{
+        padding-top: .15em;;
+        font-size: 1.5em;
+      }
     }
     button.s1:hover {
       box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.5);
