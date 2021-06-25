@@ -24,17 +24,12 @@ export default function WorkBench(props) {
   const BookID = props.BookID;
   const [toolListA, setToolListA] = useState([
     { Type: 'Editor', order: 1, location: 'Chapter 1' },
-    { Type: 'Character', order: 2, location: 'Bridge Four' },
-    { Type: 'Worldbuilder', order: 3, location: 'Roshar' },
-    { Type: 'BookInfo', order: 4, location: 'Title' },
-    { Type: 'Feedback', order: 5, location: '@user: Thory' },
-    { Type: 'Outline', order: 6, location: 'Act 2' },
-    { Type: 'Print', order: 7, location: 'epub' },
-    { Type: 'Settings', order: 8, location: 'settings' }
+    { Type: 'Character', order: 2, location: 'Bridge Four' }
   ]);
   const [toolListB, setToolListB] = useState([
-    { Type: 'Editor', order: '1', location: 'Chapter 1' },
-    { Type: 'Character', order: '2', location: 'Chapter 1' }
+    { Type: 'BookInfo', order: 4, location: 'Title' },
+    { Type: 'Feedback', order: 5, location: '@user: Thory' },
+    { Type: 'Outline', order: 6, location: 'Act 2' }
   ]);
   //TabBar and ToolView
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
@@ -102,12 +97,10 @@ function Tab(props) {
   return (
     <div className={sel}>
       <a onClick={select}>
-        <span className="material-icons">{setIcon(props.name)}</span>
+        <i className={setIcon(props.name)} />
         <p>{props.location}</p>
       </a>
-      <span className="material-icons" onClick={remove}>
-        close
-      </span>
+      <i className="bi bi-x" onClick={remove} />
     </div>
   );
 }
@@ -135,21 +128,21 @@ function Tablist(Tabs, list) {
 
 function setIcon(icon) {
   if (icon == 'Character') {
-    return 'group';
+    return 'bi bi-people';
   } else if (icon == 'Worldbuilder') {
-    return 'filter_hdr';
+    return 'bi bi-tree';
   } else if (icon == 'BookInfo') {
-    return 'bookmark';
+    return 'bi bi-bookmark';
   } else if (icon == 'Outline') {
-    return 'bubble_chart';
+    return 'bi bi-snow3';
   } else if (icon == 'Feedback') {
-    return 'cached';
+    return 'bi bi-arrow-repeat';
   } else if (icon == 'Print') {
-    return 'print';
+    return 'bi bi-printer';
   } else if (icon == 'Settings') {
-    return 'settings';
+    return 'bi bi-gear';
   } else {
-    return 'edit';
+    return 'bi bi-vector-pen';
   }
 }
 

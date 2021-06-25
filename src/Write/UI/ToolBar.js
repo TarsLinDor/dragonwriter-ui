@@ -4,35 +4,35 @@ export default function ToolBar(props) {
   return (
     <div className="toolbar">
       <div className=" rows">
-        <button >
-          <span className="material-icons">bookmark</span>
+        <button>
+          <i class="bi bi-bookmark" />
         </button>
-        <button >
-          <span className="material-icons">edit</span>
+        <button>
+          <i class="bi bi-vector-pen" />
         </button>
-        <button >
-          <span className="material-icons">filter_hdr</span>
+        <button>
+          <i class="bi bi-tree" />
         </button>
-        <button >
-          <span className="material-icons">group</span>
+        <button>
+          <i class="bi bi-people" />
         </button>
-        <button  className='rotated'>
-          <span className="material-icons">bubble_chart</span>
+        <button className="rotated">
+          <i class="bi bi-snow3" />
         </button>
-        <button  >
-          <span className="material-icons">cached</span>
+        <button>
+          <i class="bi bi-arrow-repeat" />
         </button>
-        <button >
-          <span className="material-icons">print</span>
+        <button>
+          <i class="bi bi-printer" />
         </button>
       </div>
 
       <div className=" rows">
         <button>
-          <span className="material-icons">invert_colors</span>
+          <i class="bi bi-droplet-half" />
         </button>
         <button>
-          <span className="material-icons">settings</span>
+          <i class="bi bi-gear" />
         </button>
       </div>
     </div>
