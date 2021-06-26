@@ -53,6 +53,60 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Nebula Oasis",
+      "id": 2,
+      "editor": [
+        {
+          "type": "chapter",
+          "order": 1,
+          "title": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": " The Meeting"
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": "The amphitheater was stuffed to the brim with hollering Dueling enthusiasts. \"This is the place,\" he said."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Prologue",
+          "order": 0,
+          "title": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": " Escsape from Asteroid #483"
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "text": " On a cold winters night, with winds howling, and snow swirling playfully, the world gave birth to a beast."
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

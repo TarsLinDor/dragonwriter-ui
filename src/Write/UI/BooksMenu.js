@@ -20,7 +20,7 @@ export default function BooksMenu(props) {
         setBookId: props.setBookId,
         BookMenu: props.BookMenu,
         setBookMenu: props.setBookMenu,
-        Order: index
+        order: index
       }}
     />
   ));
