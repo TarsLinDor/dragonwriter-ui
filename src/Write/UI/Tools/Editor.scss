@@ -1,270 +1,88 @@
-@import url('https://cdn.quilljs.com/1.3.6/quill.snow.css');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
-.editor {
-  box-shadow: 0 -4px 7px 0 rgba(0, 0, 0, 0);
-  z-index: 2;
+body {
+  padding: 0;
+  margin: 0;
+  max-height: 100vh;
+  overflow: hidden;
+}
+#root {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.Editor {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-grow: 1;
-  background-color: whitesmoke;
-  .tableofcontents {
-    min-width: 10em;
-    max-width: 15em;
-    width: 15%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .SlateToolBar {
     display: flex;
-
-    flex-direction: column;
-    border-right: solid lightgrey 1px;
+    padding: 0.25em;
+    justify-content: space-between;
+    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.05);
+    align-items: center;
     flex-grow: 1;
-    margin: 0.25em 0em 0.25em 0em;
-    .title {
-      display: flex;
-      padding: 0 0px 5px 0px;
-      margin: 0 5px;
-      border-bottom: solid lightgrey 1px;
+    z-index: 2;
+    p {
+      font-family: Lato;
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
-    .contents {
-      //padding-left: 5px;
-      flex-grow: 1;
-      overflow-y: scroll;
-      font-family: 'Merriweather', serif;
-      font-size: 14px;
-      overflow: auto;
-      .Chapter {
-        padding: 0 0em 0 0.5em;
-        display: flex;
-        //flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        span {
-          margin-left: auto;
-        }
-      }
-      .Chapter:hover {
-        background-color: whitesmoke;
-      }
-      .Part {
-        padding: 0 0em 0 0.25em;
-        display: flex;
-        //flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        span {
-          margin-left: auto;
-        }
-      }
-      .Part:hover {
-        background-color: whitesmoke;
-      }
-    }
-    .add-contents {
-      border-top: solid rgb(202, 202, 202) 1px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: -0.25em 0.25em;
-      .word-count {
-        margin-left: 5px;
-        font-size: 14px;
-        font-family: 'Merriweather', serif;
-        //font-weight: bold;
-      }
-    }
-  }
-
-  .TextEditor {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    //font-family: 'Merriweather', serif;
-    .top-toolbar {
-      margin: 0 5px;
-      padding: 5px 5px 4px 5px;
-      display: flex;
-      flex-direction: row;
-      align-items: top;
-      justify-content: space-between;
-      //border-bottom: solid 1px lightgrey;
-      .content-type {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        a {
-          font-family: 'Merriweather', serif;
-          font-size: 14px;        
-        }
-        div {
-          margin-right: auto;
-        }
-          p {
-          display: inline-block;
-          font-size: 14px;
-          outline: none;
-          text-align: left;
-          margin: 0 5px;
-          padding: 0;
-        }
-        p:empty:before {
-          content: attr(placeholder);
-          pointer-events: none;
-          display: inline-block;
-          color: lightgray;
-        }
-        //position: absolute;
-      }
-      .draft-menu {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        p {
-          font-family: 'Merriweather', serif;
-          font-size: 14px;
-        }
-        div {
-          margin-left: auto;
-        }
-      }
-      .content-title {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        div {
-          padding: 0;
-          margin: auto;
-        }
-        p {
-          font-size: 14px;
-          font-weight: bold;
-          outline: none;
-          text-align: center;
-          margin: 0 5px;
-          padding: 0;
-        }
-      }
-    }
-    p:empty:before {
-      content: attr(placeholder);
-      pointer-events: none;
-      display: block;
-      color: lightgray;
-    }
-    .quill-editor {
-      flex: 1;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
-      background-color: whitesmoke;
-      margin: 0 .5em;
-      //min-width: 55em;
-    }
-    .QuillToolbar {
-      flex: 1;
-      //flex-grow: 1;
-      background-color: whitesmoke;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    button {
+      background-color: inherit;
+      font-size: 1em;
       border: none;
-      margin: 0 0.25em;
-      padding: 0.25em 0;
-      max-height: 2em;
-      bottom: 0;
-      left: auto;
-      //border-top: solid rgb(202, 202, 202) 1px;
-      font-family: 'Merriweather', serif;
-      button {
-        font-size: 12px;
-      }
-      button:hover {
-        background-color: inherit;
-      }
-      a {
-        font-size: 14px;
-        //padding: 0 .5em;
-      }
-      div {
-        margin: auto;
-        display: flex;
-        align-items: center;
-      }
-    }
-
-    .ql-align-center.ql-snow {
-      border-style: none;
-      text-align: center;
-    }
-
-    .ql-container {
-      //position: relative;
-      overflow: auto;
       outline: none;
-      border: none;
-      font-family: 'Merriweather', serif;
-      margin: 1em auto;
-      width: 100%;
-      height: 100%;
-      max-width: 55em;
-      padding: 3.5em 1em;
-      //max-height: 1072px;
-
-      box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.2);
-      z-index: 3;
-      background-color: white;
     }
-
-    .ql-container p {
-      text-indent: 20px;
-      padding: 0px 0px 5px 0px;
-    }
-
-    .ql-align-center {
-      text-align: center;
+    button:hover {
+      color: rgb(0, 110, 255);
     }
   }
-
-  button {
-    background-color: inherit;
-    color: black;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    font-size: 100%;
-    width: 1.6em;
-    height: 1.6em;
-    cursor: pointer;
+  .area {
+    position: relative;
+    display: block;
+    overflow-y: auto;
+    background-color: whitesmoke;
+    max-height: 97.5vh;
+    //margin: auto;
   }
-
-  button:hover {
-    background-color: lightgrey;
+  .Title {
+    text-align: center;
+    font-size: 2em;
+    h1{
+      font-weight: normal;
+    }
   }
-  .Drafts {
-    margin: 0.25em 0.25em 0.25em 0.25em;
-    border-left: solid lightgrey 1px;
-    display: flex;
-    flex-direction: column;
-    .title {
-      display: flex;
-      padding: 0 5px 5px 5px;
-      margin: 0 5px;
-      border-bottom: solid lightgrey 1px;
+  .page {
+    margin: auto;
+    padding: 5em 5em;
+    min-height: 100vh;
+    max-width: 40em;
+    z-index: 1;
+    background-color: white;
+    font-family: 'Alegreya', serif;
+    //font-family: 'Noto Serif', serif;
+    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.05);
+    p{
+      
     }
-    .draft-list {
-      display: flex;
-      flex-grow: 1;
-      flex-direction: row;
-      margin: auto;
-    }
-    .new-draft {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      border-top: solid lightgrey 1px;
-      margin: 0em 0.25em -0.25em 0.25em;
-    }
+  }
+  .note {
+    background-color: rgb(210, 250, 213);
+    margin: 0.5em;
+    padding: 0.25em;
+    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.25);
   }
 }
