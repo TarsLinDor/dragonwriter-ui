@@ -45,9 +45,9 @@
         color: white;
       }
       .Selected {
-        background-color: var(--C1);
+        background-color: white;
         box-shadow: 0 0px 7px 0 rgba(0, 0, 0, 0.5);
-        z-index: 2;
+        z-index: 3;
       }
       .notSelected {
         background-color: var(--C3);
