@@ -36,7 +36,7 @@
         border: none;
         outline: none;
         background-color: inherit;
-        font-size: 1.0em;
+        font-size: 1em;
         margin-left: auto;
         margin-right: 0.25em;
         padding: 0;
@@ -47,7 +47,7 @@
       .Selected {
         background-color: var(--C1);
         box-shadow: 0 0px 7px 0 rgba(0, 0, 0, 0.5);
-        z-index: 1;
+        z-index: 2;
       }
       .notSelected {
         background-color: var(--C3);
