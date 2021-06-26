@@ -21,31 +21,37 @@ export default function Editor(props) {
   }
   return (
     <div className="Editor">
-      <Toolbar {...{ editor: editor }} />
-      <div className="area">
-        <div className="page">
-          <div className="Title">
-            <h1>
-              {zero}
-              {order}
-            </h1>
-            <h3>
-              <SLATE
-                {...{
-                  editor: title,
-                  value: contentTitle,
-                  setValue: setContentTitle
-                }}
-              />
-            </h3>
-          </div>
-          <br />
-          <div className="Contents">
-            <SLATE
-              {...{ editor: editor, value: content, setValue: setContent }}
-            />
+      <div className="COl-3">
+        <TableOfContents /> {/*1*/}
+        <div>
+          <Toolbar {...{ editor: editor }} />
+          <div className="area"> {/*2*/}
+            <div className="page">
+              <div className="Title">
+                <h1>
+                  {zero}
+                  {order}
+                </h1>
+                <h3>
+                  <SLATE
+                    {...{
+                      editor: title,
+                      value: contentTitle,
+                      setValue: setContentTitle
+                    }}
+                  />
+                </h3>
+              </div>
+              <br />
+              <div className="Contents">
+                <SLATE
+                  {...{ editor: editor, value: content, setValue: setContent }}
+                />
+              </div>
+            </div>
           </div>
         </div>
+        <TableOfContents /> {/*2*/}
       </div>
     </div>
   );
@@ -111,7 +117,7 @@ function Toolbar(props) {
             CustomEditor.toggleCodeBlock(props.editor);
           }}
         >
-          <i class="bi bi-code-slash" />
+          <i class="bi bi-file-break" />
         </button>
         <button
           onMouseDown={event => {
@@ -136,11 +142,12 @@ function Toolbar(props) {
 
 function TableOfContents(props) {
   const [contents, setContents] = useState(db.books[0].editor);
-  var mapAsc = new Map([...map.entries()].sort((a, b) => a[0] > b[0]));
+  //var mapAsc = new Map([...map.entries()].sort((a, b) => a[0] > b[0]));
   var listItems = contents.map((contents, index) => (
     <ContentItem
       {...{
         key: contents.id,
+        type: contents.type,
         order: contents.order
       }}
     />
@@ -151,4 +158,8 @@ function TableOfContents(props) {
       {listItems}
     </div>
   );
+}
+
+function ContentItem(props) {
+  return <div>{props.type}</div>;
 }
