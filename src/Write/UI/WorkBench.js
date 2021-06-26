@@ -17,6 +17,29 @@ function toggle(value, set) {
     set(0);
   }
 }
+function half(list) {
+  var h = list.length;
+  if (h % 2 == 0) {
+    h = Math.ceil(h / 2);
+    const firstHalf = list.slice(0, h);
+    const secondHalf = list.slice(-h);
+    return [firstHalf, secondHalf];
+  } else {
+    h = Math.ceil(h / 2);
+    const firstHalf = list.slice(0, h);
+    const secondHalf = list.slice(-(h - 1));
+    return [firstHalf, secondHalf];
+  }
+}
+function full(listA, listB) {
+  var A;
+  if (listA != listB) {
+    A = listA.concat(listB);
+  } else {
+    A = listA;
+  }
+  return A;
+}
 //UI Specific Functions
 
 export default function WorkBench(props) {
@@ -24,13 +47,10 @@ export default function WorkBench(props) {
   const BookID = props.BookID;
   const [toolListA, setToolListA] = useState([
     { Type: 'Editor', order: 1, location: 'Chapter 1' },
+    { Type: 'Editor', order: 2, location: 'Chapter 2' },
     { Type: 'Character', order: 2, location: 'Bridge Four' }
   ]);
-  const [toolListB, setToolListB] = useState([
-    { Type: 'BookInfo', order: 4, location: 'Title' },
-    { Type: 'Feedback', order: 5, location: '@user: Thory' },
-    { Type: 'Outline', order: 6, location: 'Act 2' }
-  ]);
+  const [toolListB, setToolListB] = useState([]);
   //TabBar and ToolView
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
   const [listItemsA, ToolA] = Tablist(toolListA, setToolListA);
@@ -38,13 +58,23 @@ export default function WorkBench(props) {
 
   function setView() {
     toggle(multiView, setMultiView);
+    if (!multiView) {
+      const Half = half(toolListA);
+      setToolListA(Half[0]);
+      setToolListB(Half[1]);
+    } else {
+      const Full = full(toolListA, toolListB);
+      setToolListA(Full);
+      setToolListB([]);
+    }
   }
-  function AddTool() {}
 
   if (multiView == 0) {
     return (
       <div className="Tools">
-        <ToolBar AddTool={AddTool} />
+        <ToolBar
+          {...{ setA: setToolListA, setB: setToolListB, view: multiView }}
+        />
         <div className="MainArea">
           <div className="TabBar">
             {listItemsA}
@@ -59,7 +89,9 @@ export default function WorkBench(props) {
   } else {
     return (
       <div className="Tools">
-        <ToolBar AddTool={AddTool} />
+        <ToolBar
+          {...{ setA: setToolListA, setB: setToolListB, view: multiView }}
+        />
         <div className="MainArea">
           <div className="TabBar">{listItemsA}</div>
           {ToolA}
@@ -69,7 +101,7 @@ export default function WorkBench(props) {
           <div className="TabBar">
             {listItemsB}
             <button>
-              <i onClick={setView} className="bi bi-layout-split" />
+              <i onClick={setView} className="bi bi-square" />
             </button>
           </div>
           {ToolB}
