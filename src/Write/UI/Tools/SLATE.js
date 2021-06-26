@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import { createEditor, Transforms, Editor, Text, Node } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
-import db from 'db.json';
 
 function SLATE(props) {
   // Format

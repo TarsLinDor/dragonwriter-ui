@@ -4,7 +4,7 @@ import { withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
 import { SLATE, CustomEditor } from './SLATE.js';
 import './editor.scss';
-const db = require('./database.json');
+const db = require('../../../database.json');
 
 export default function Editor(props) {
   const thing = db.books[0].editor[0];
