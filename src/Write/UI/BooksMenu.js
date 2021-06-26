@@ -10,12 +10,12 @@ function toggle(value, set) {
 }
 
 export default function BooksMenu(props) {
-  const [books, setbooks] = useState(db.Books);
+  const [books, setbooks] = useState(db.books);
   var listItems = books.map((books, index) => (
     <Book
       {...{
         key: books.Id,
-        title: books.Title,
+        title: books.title,
         setBookTitle: props.setBookTitle,
         setBookId: props.setBookId,
         BookMenu: props.BookMenu,
@@ -45,8 +45,8 @@ export default function BooksMenu(props) {
 
 function Book(props) {
   function selectBook() {
-    props.setBookTitle(db.Books[props.Order].Title);
-    props.setBookId(db.Books[props.Order].Id);
+    props.setBookTitle(db.books[props.order].title);
+    props.setBookId(db.books[props.order].id);
     toggle(props.BookMenu, props.setBookMenu);
   }
   return (
