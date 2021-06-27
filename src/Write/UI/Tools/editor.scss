@@ -54,9 +54,20 @@ body {
       color: rgb(0, 110, 255);
     }
   }
+  .Mainarea {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    background-color: whitesmoke;
+    max-height: 95.5vh;
+    margin: auto;
+    z-index: 0;
+  }
   .area {
     position: relative;
     display: flex;
+    flex-direction: column;
     overflow-y: auto;
     background-color: whitesmoke;
     max-height: 91.5vh;
@@ -94,13 +105,24 @@ body {
     box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.25);
   }
   .tableofcontents {
-    //margin: 1em;
+    //margin: .5em;
+    //border-radius: .25em;
+    border-right: solid 1px lightgrey;
     //position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    width: 150px;
-    background-color: red;
+    min-width: 175px;
+    background-color: white;
     z-index: 3;
   }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
 }

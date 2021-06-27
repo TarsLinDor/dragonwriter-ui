@@ -21,11 +21,9 @@ export default function Editor(props) {
   }
   return (
     <div className="Editor">
-      <div className="COl-3">
-        <TableOfContents /> {/*1*/}
-        <div>
-          <Toolbar {...{ editor: editor }} />
-          <div className="area"> {/*2*/}
+        <Toolbar {...{ editor: editor }} />
+          <div className="area">
+            
             <div className="page">
               <div className="Title">
                 <h1>
@@ -51,9 +49,6 @@ export default function Editor(props) {
             </div>
           </div>
         </div>
-        <TableOfContents /> {/*2*/}
-      </div>
-    </div>
   );
 }
 
