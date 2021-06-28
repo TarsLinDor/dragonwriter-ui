@@ -41,7 +41,8 @@ function full(listA, listB) {
   return A;
 }
 function remove(list, order) {
-  const N = list.splice(order, 1);
+  var N = list;
+  N.splice(order, 1);
   return N;
 }
 function add(list, item) {
@@ -122,8 +123,10 @@ export default function WorkBench(props) {
 
 function Tab(props) {
   function deleteTab() {
-    const NewList = props.list.splice(0, 2);
-    props.setList(NewList);
+    const newList = remove(props.list, props.order);
+    props.setList(newList);
+    props.setSelect(0);
+    props.setTool(setWorkingTool(newList[0].name));
   }
 
   function select() {
