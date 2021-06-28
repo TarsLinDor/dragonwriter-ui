@@ -40,15 +40,19 @@ function full(listA, listB) {
   }
   return A;
 }
+function remove(list, order) {
+  const N = list.splice(order, 1);
+  return N;
+}
 //UI Specific Functions
 
 export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
   const BookID = props.BookID;
   const [toolListA, setToolListA] = useState([
-    { Type: 'Editor', order: 1, location: 'Chapter 1' },
-    { Type: 'Editor', order: 2, location: 'Chapter 2' },
-    { Type: 'Character', order: 2, location: 'Bridge Four' }
+    { type: 'Editor', order: 1, location: 'Chapter 1' },
+    { type: 'Editor', order: 2, location: 'Chapter 2' },
+    { type: 'Character', order: 2, location: 'Bridge Four' }
   ]);
   const [toolListB, setToolListB] = useState([]);
   //TabBar and ToolView
@@ -113,8 +117,9 @@ export default function WorkBench(props) {
 
 function Tab(props) {
   const L = props.Tabs.length;
-  function remove() {
-    props.setList(props.Tabs.slice(props.order));
+  function deleteTab() {
+    //remove(props.list, props.order)
+    props.setList();
   }
   function select() {
     props.setSelect(props.order);
@@ -132,26 +137,26 @@ function Tab(props) {
         <i className={setIcon(props.name)} />
         <p>{props.location}</p>
       </a>
-      <i className="bi bi-x" onClick={remove} />
+      <i className="bi bi-x" onClick={deleteTab(props.list, props.setList)} />
     </div>
   );
 }
 
-function Tablist(Tabs, list) {
+function Tablist(list, setlist) {
   const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState(<Editor {...Tabs.location} />);
-  const listItems = Tabs.map((Tablist, index) => (
+  const [Tool, setTool] = useState(<div className="Tool" />);
+  const listItems = list.map((tablist, index) => (
     <Tab
       {...{
         key: index,
         order: index,
-        name: Tablist.Type,
-        location: Tablist.location,
-        setList: list,
+        name: tablist.type,
+        location: tablist.location,
+        setList: setlist,
         setTool: setTool,
         setSelect: setSelect,
         selected: selected,
-        Tabs: Tabs
+        list: list
       }}
     />
   ));

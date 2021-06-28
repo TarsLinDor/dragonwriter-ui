@@ -6,6 +6,11 @@ import { SLATE, CustomEditor } from './SLATE.js';
 import './editor.scss';
 const db = require('../../../database.json');
 
+export default function Editor() {
+  return <div class="Tool">Editor</div>;
+}
+
+/*
 export default function Editor(props) {
   const thing = db.books[0].editor[0];
   const order = thing.order;
@@ -158,3 +163,4 @@ function TableOfContents(props) {
 function ContentItem(props) {
   return <div>{props.type}</div>;
 }
+*/
