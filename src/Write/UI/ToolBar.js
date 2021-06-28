@@ -23,6 +23,10 @@ export default function ToolBar(props) {
           <i className="bi bi-arrow-repeat" />
         </button>
         <button>
+          <i className="bi bi-lightbulb" />
+          {/*This would be where users can ask questions and stuff*/}
+        </button>
+        <button>
           <i className="bi bi-printer" />
         </button>
       </div>
