@@ -195,27 +195,53 @@ function setIcon(icon) {
 }
 
 function setWorkingTool(view, location, setLocation) {
+  var d = new Date();
+  var n = d.getTime();
   switch (view) {
     default:
-      return <BookInfo {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <BookInfo
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
+      );
     case 'BookInfo':
-      return <BookInfo {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <BookInfo
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
+      );
     case 'Editor':
-      return <Editor {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <Editor {...{ key: n, location: location, setLocation: setLocation }} />
+      );
     case 'Character':
       return (
-        <Character {...{ location: location, setLocation: setLocation }} />
+        <Character
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
       );
     case 'Worldbuilder':
       return (
-        <Worldbuilder {...{ location: location, setLocation: setLocation }} />
+        <Worldbuilder
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
       );
     case 'Outline':
-      return <Outline {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <Outline
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
+      );
     case 'Feedback':
-      return <Feedback {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <Feedback
+          {...{ key: n, location: location, setLocation: setLocation }}
+        />
+      );
     case 'Print':
-      return <Print {...{ location: location, setLocation: setLocation }} />;
+      return (
+        <Print {...{ key: n, location: location, setLocation: setLocation }} />
+      );
     case 'Settings':
       return <Settings />;
   }
