@@ -116,11 +116,12 @@ export default function WorkBench(props) {
 }
 
 function Tab(props) {
-  const L = props.Tabs.length;
+  const L = props.list.length;
   function deleteTab() {
-    //remove(props.list, props.order)
+    remove(props.list, props.order)
     props.setList();
   }
+
   function select() {
     props.setSelect(props.order);
     props.setTool(setToolView(props.name));
@@ -144,7 +145,7 @@ function Tab(props) {
 
 function Tablist(list, setlist) {
   const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState(<div className="Tool" />);
+  const [Tool, setTool] = useState([<div className="Tool" />]);
   const listItems = list.map((tablist, index) => (
     <Tab
       {...{
