@@ -128,7 +128,7 @@ function Tab(props) {
 
   function select() {
     props.setSelect(props.order);
-    props.setTool(setToolView(props.name));
+    props.setTool(setWorkingTool(props.name));
   }
 
   if (props.selected == props.order) {
@@ -172,55 +172,49 @@ function Tablist(List, setList) {
 
 function setIcon(icon) {
   // Sets Which icon is visible in the tab.
-  var I;
   switch (icon) {
     case 'BookInfo':
-      I = 'bi bi-bookmark';
-      break;
+      return 'bi bi-bookmark';
     case 'Editor':
-      I = 'bi bi-vector-pen';
-      break;
+      return 'bi bi-vector-pen';
     case 'Character':
-      I = 'bi bi-people';
-      break;
+      return 'bi bi-people';
     case 'Worldbuilder':
-      I = 'bi bi-tree';
-      break;
+      return 'bi bi-tree';
     case 'Outline':
-      I = 'bi bi-snow3';
-      break;
+      return 'bi bi-snow3';
     case 'Feedback':
-      I = 'bi bi-arrow-repeat';
-      break;
+      return 'bi bi-arrow-repeat';
     case 'Print':
-      I = 'bi bi-printer';
-      break;
+      return 'bi bi-printer';
     case 'Settings':
-      I = 'bi bi-gear';
-      break;
+      return 'bi bi-gear';
     default:
-      I = 'bi bi-vector-pen';
-      break;
+      return 'bi bi-vector-pen';
   }
-  return I;
 }
 
-function setToolView(view) {
-  if (view == 'Editor') {
-    return <Editor {...location} />;
-  } else if (view == 'Character') {
-    return <Character {...location} />;
-  } else if (view == 'Worldbuilder') {
-    return <Worldbuilder {...location} />;
-  } else if (view == 'BookInfo') {
-    return <BookInfo {...location} />;
-  } else if (view == 'Feedback') {
-    return <Feedback {...location} />;
-  } else if (view == 'Outline') {
-    return <Outline {...location} />;
-  } else if (view == 'Print') {
-    return <Print {...location} />;
-  } else if (view == 'Settings') {
-    return <Settings {...location} />;
+function setWorkingTool(view, location, setLocation) {
+  switch (view) {
+    default:
+      return <BookInfo {...{ location: location, setLocation: setLocation }} />;
+    case 'BookInfo':
+      return <BookInfo {...{ location: location, setLocation: setLocation }} />;
+    case 'Character':
+      return (
+        <Character {...{ location: location, setLocation: setLocation }} />
+      );
+    case 'Worldbuilder':
+      return (
+        <Worldbuilder {...{ location: location, setLocation: setLocation }} />
+      );
+    case 'Outline':
+      return <Outline {...{ location: location, setLocation: setLocation }} />;
+    case 'Feedback':
+      return <Feedback {...{ location: location, setLocation: setLocation }} />;
+    case 'Print':
+      return <Print {...{ location: location, setLocation: setLocation }} />;
+    case 'Settings':
+      return <Settings />;
   }
 }
