@@ -122,7 +122,7 @@ export default function WorkBench(props) {
 
 function Tab(props) {
   function deleteTab() {
-    const NewList = remove(props.list, props.order);
+    const NewList = props.list.splice(0, 2);
     props.setList(NewList);
   }
 
