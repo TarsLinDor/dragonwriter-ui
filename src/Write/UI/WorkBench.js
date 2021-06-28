@@ -54,7 +54,9 @@ export default function WorkBench(props) {
     { type: 'Editor', order: 2, location: 'Chapter 2' },
     { type: 'Character', order: 2, location: 'Bridge Four' }
   ]);
-  const [toolListB, setToolListB] = useState([]);
+  const [toolListB, setToolListB] = useState([
+    { type: 'Editor', order: 1, location: 'Chapter 1' }
+  ]);
   //TabBar and ToolView
   const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
   const [listItemsA, ToolA] = Tablist(toolListA, setToolListA);
@@ -116,10 +118,9 @@ export default function WorkBench(props) {
 }
 
 function Tab(props) {
-  const L = props.list.length;
   function deleteTab() {
-    remove(props.list, props.order)
-    props.setList();
+    const NewList = remove(props.list, props.order);
+    props.setList(NewList);
   }
 
   function select() {
@@ -136,9 +137,9 @@ function Tab(props) {
     <div className={sel}>
       <a onClick={select}>
         <i className={setIcon(props.name)} />
-        <p>{props.location}</p>
+        <p>{props.order /*location*/}</p>
       </a>
-      <i className="bi bi-x" onClick={deleteTab(props.list, props.setList)} />
+      <i className="bi bi-x" onClick={deleteTab} />
     </div>
   );
 }
