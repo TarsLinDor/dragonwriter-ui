@@ -18,11 +18,11 @@ export default function NavBar(props) {
         <h1 onClick={props.menu}>DragonWriter</h1>
         <h2>{props.BookTitle}</h2>
         <button className="s1" onClick={bookmenu}>
-        <i class="bi bi-book"></i>
+        <i className="bi bi-book"></i>
       </button>
       </div>
       <button className="s2" onClick={props.menu}>
-      <i class="bi bi-three-dots"></i>
+      <i className="bi bi-three-dots"></i>
       </button>
     </div>
   );

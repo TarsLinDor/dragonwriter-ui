@@ -5,34 +5,34 @@ export default function ToolBar(props) {
     <div className="toolbar">
       <div className=" rows">
         <button>
-          <i class="bi bi-bookmark" />
+          <i className="bi bi-bookmark" />
         </button>
         <button>
-          <i class="bi bi-vector-pen" />
+          <i className="bi bi-vector-pen" />
         </button>
         <button>
-          <i class="bi bi-tree" />
+          <i className="bi bi-tree" />
         </button>
         <button>
-          <i class="bi bi-people" />
+          <i className="bi bi-people" />
         </button>
         <button>
-          <i class="bi bi-snow3" />
+          <i className="bi bi-snow3" />
         </button>
         <button>
-          <i class="bi bi-arrow-repeat" />
+          <i className="bi bi-arrow-repeat" />
         </button>
         <button>
-          <i class="bi bi-printer" />
+          <i className="bi bi-printer" />
         </button>
       </div>
 
       <div className=" rows">
         <button>
-          <i class="bi bi-droplet-half" />
+          <i className="bi bi-droplet-half" />
         </button>
         <button>
-          <i class="bi bi-gear" />
+          <i className="bi bi-gear" />
         </button>
       </div>
     </div>

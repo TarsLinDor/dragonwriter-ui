@@ -200,6 +200,8 @@ function setWorkingTool(view, location, setLocation) {
       return <BookInfo {...{ location: location, setLocation: setLocation }} />;
     case 'BookInfo':
       return <BookInfo {...{ location: location, setLocation: setLocation }} />;
+    case 'Editor':
+      return <Editor {...{ location: location, setLocation: setLocation }} />;
     case 'Character':
       return (
         <Character {...{ location: location, setLocation: setLocation }} />
