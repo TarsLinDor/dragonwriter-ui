@@ -7,7 +7,7 @@ import './editor.scss';
 const db = require('../../../database.json');
 
 export default function Editor() {
-  return <div class="Tool">Editor</div>;
+  return <div className="Tool">Editor</div>;
 }
 
 /*
