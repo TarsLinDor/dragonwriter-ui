@@ -126,12 +126,14 @@ function Tab(props) {
     const newList = remove(props.list, props.order);
     props.setList(newList);
     props.setSelect(0);
-    props.setTool(setWorkingTool(newList[0].name));
+    if (newList.length > 0) {
+      props.setTool(setWorkingTool(newList[0].type));
+    }
   }
 
   function select() {
     props.setSelect(props.order);
-    props.setTool(setWorkingTool(props.name));
+    props.setTool(setWorkingTool(props.type));
   }
 
   if (props.selected == props.order) {
@@ -142,7 +144,7 @@ function Tab(props) {
   return (
     <div className={sel}>
       <a onClick={select}>
-        <i className={setIcon(props.name)} />
+        <i className={setIcon(props.type)} />
         <p>{props.order /*location*/}</p>
       </a>
       <i className="bi bi-x" onClick={deleteTab} />
@@ -159,7 +161,7 @@ function Tablist(List, setList) {
       {...{
         key: index,
         order: index,
-        name: ListItem.type,
+        type: ListItem.type,
         location: location,
         setLocation: setLocation,
         setList: setList,
