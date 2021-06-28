@@ -44,27 +44,34 @@ function remove(list, order) {
   const N = list.splice(order, 1);
   return N;
 }
+function add(list, item) {
+  const NewList = list.concat(item);
+  return NewList;
+}
 //UI Specific Functions
+const startState = [
+  { type: 'BookInfo' },
+  { type: 'Editor' }
+  //{ type: 'Worldbuilder' },
+  //{ type: 'Character' },
+  //{ type: 'Outline' },
+  //{ type: 'Feedback' },
+  //{ type: 'Print'},
+  //{ type: 'Settings'}
+];
 
 export default function WorkBench(props) {
   //This is the MainArea where all the tools are located.
-  const BookID = props.BookID;
-  const [toolListA, setToolListA] = useState([
-    { type: 'Editor', order: 1, location: 'Chapter 1' },
-    { type: 'Editor', order: 2, location: 'Chapter 2' },
-    { type: 'Character', order: 2, location: 'Bridge Four' }
-  ]);
-  const [toolListB, setToolListB] = useState([
-    { type: 'Editor', order: 1, location: 'Chapter 1' }
-  ]);
+  const [toolListA, setToolListA] = useState(startState);
+  const [toolListB, setToolListB] = useState([]);
   //TabBar and ToolView
-  const [multiView, setMultiView] = useState(0); //used to set the view to 1 tool or 2.
-  const [listItemsA, ToolA] = Tablist(toolListA, setToolListA);
-  const [listItemsB, ToolB] = Tablist(toolListB, setToolListB);
+  const [view, setview] = useState(0); //used to set the view to 1 tool or 2.
+  const [listItemsA, ToolA] = Tablist(toolListA, setToolListA); //Defines what is in Tab bar A and the selected tool in that window.
+  const [listItemsB, ToolB] = Tablist(toolListB, setToolListB); //Defines what is in Tab bar B and the selected tool in that window.
 
   function setView() {
-    toggle(multiView, setMultiView);
-    if (!multiView) {
+    toggle(view, setview);
+    if (!view) {
       const Half = half(toolListA);
       setToolListA(Half[0]);
       setToolListB(Half[1]);
@@ -75,12 +82,10 @@ export default function WorkBench(props) {
     }
   }
 
-  if (multiView == 0) {
+  if (view == 0) {
     return (
       <div className="Tools">
-        <ToolBar
-          {...{ setA: setToolListA, setB: setToolListB, view: multiView }}
-        />
+        <ToolBar {...{ setA: setToolListA, setB: setToolListB, view: view }} />
         <div className="MainArea">
           <div className="TabBar">
             {listItemsA}
@@ -95,9 +100,7 @@ export default function WorkBench(props) {
   } else {
     return (
       <div className="Tools">
-        <ToolBar
-          {...{ setA: setToolListA, setB: setToolListB, view: multiView }}
-        />
+        <ToolBar {...{ setA: setToolListA, setB: setToolListB, view: view }} />
         <div className="MainArea">
           <div className="TabBar">{listItemsA}</div>
           {ToolA}
@@ -147,13 +150,13 @@ function Tab(props) {
 function Tablist(list, setlist) {
   const [selected, setSelect] = useState(0);
   const [Tool, setTool] = useState([<div className="Tool" />]);
-  const listItems = list.map((tablist, index) => (
+  const TabItems = list.map((listItem, index) => (
     <Tab
       {...{
         key: index,
         order: index,
-        name: tablist.type,
-        location: tablist.location,
+        name: listItem.type,
+        //location: listItem.location,
         setList: setlist,
         setTool: setTool,
         setSelect: setSelect,
@@ -162,7 +165,7 @@ function Tablist(list, setlist) {
       }}
     />
   ));
-  return [listItems, Tool];
+  return [TabItems, Tool];
 }
 
 function setIcon(icon) {
