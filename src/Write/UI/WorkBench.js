@@ -51,13 +51,13 @@ function add(list, item) {
 //UI Specific Functions
 const startState = [
   { type: 'BookInfo' },
-  { type: 'Editor' }
+  { type: 'Editor' },
   //{ type: 'Worldbuilder' },
   //{ type: 'Character' },
   //{ type: 'Outline' },
   //{ type: 'Feedback' },
   //{ type: 'Print'},
-  //{ type: 'Settings'}
+  { type: 'Settings' }
 ];
 
 export default function WorkBench(props) {
@@ -147,21 +147,23 @@ function Tab(props) {
   );
 }
 
-function Tablist(list, setlist) {
+function Tablist(List, setList) {
   const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState([<div className="Tool" />]);
-  const TabItems = list.map((listItem, index) => (
+  const [Tool, setTool] = useState([<BookInfo />]);
+  const [location, setLocation] = useState([]);
+  const TabItems = List.map((ListItem, index) => (
     <Tab
       {...{
         key: index,
         order: index,
-        name: listItem.type,
-        //location: listItem.location,
-        setList: setlist,
+        name: ListItem.type,
+        location: location,
+        setLocation: setLocation,
+        setList: setList,
         setTool: setTool,
         setSelect: setSelect,
         selected: selected,
-        list: list
+        list: List
       }}
     />
   ));
@@ -169,23 +171,38 @@ function Tablist(list, setlist) {
 }
 
 function setIcon(icon) {
-  if (icon == 'Character') {
-    return 'bi bi-people';
-  } else if (icon == 'Worldbuilder') {
-    return 'bi bi-tree';
-  } else if (icon == 'BookInfo') {
-    return 'bi bi-bookmark';
-  } else if (icon == 'Outline') {
-    return 'bi bi-snow3';
-  } else if (icon == 'Feedback') {
-    return 'bi bi-arrow-repeat';
-  } else if (icon == 'Print') {
-    return 'bi bi-printer';
-  } else if (icon == 'Settings') {
-    return 'bi bi-gear';
-  } else {
-    return 'bi bi-vector-pen';
+  // Sets Which icon is visible in the tab.
+  var I;
+  switch (icon) {
+    case 'BookInfo':
+      I = 'bi bi-bookmark';
+      break;
+    case 'Editor':
+      I = 'bi bi-vector-pen';
+      break;
+    case 'Character':
+      I = 'bi bi-people';
+      break;
+    case 'Worldbuilder':
+      I = 'bi bi-tree';
+      break;
+    case 'Outline':
+      I = 'bi bi-snow3';
+      break;
+    case 'Feedback':
+      I = 'bi bi-arrow-repeat';
+      break;
+    case 'Print':
+      I = 'bi bi-printer';
+      break;
+    case 'Settings':
+      I = 'bi bi-gear';
+      break;
+    default:
+      I = 'bi bi-vector-pen';
+      break;
   }
+  return I;
 }
 
 function setToolView(view) {
