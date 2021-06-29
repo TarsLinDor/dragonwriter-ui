@@ -51,14 +51,14 @@ function add(list, item) {
 }
 //UI Specific Functions
 const startState = [
-  { type: 'BookInfo' },
-  { type: 'Editor' },
+  { type: 'BookInfo' }
+  //{ type: 'Editor' },
   //{ type: 'Worldbuilder' },
   //{ type: 'Character' },
   //{ type: 'Outline' },
   //{ type: 'Feedback' },
   //{ type: 'Print'},
-  { type: 'Settings' }
+  //{ type: 'Settings' }
 ];
 
 export default function WorkBench(props) {

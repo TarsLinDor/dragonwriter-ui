@@ -19,6 +19,24 @@ export default function ToolBar(props) {
   function addWorldBuilder() {
     addTool([{ type: 'Worldbuilder' }]);
   }
+  function addCharacter() {
+    addTool([{ type: 'Character' }]);
+  }
+  function addOutline() {
+    addTool([{ type: 'Outline' }]);
+  }
+  function addFeedback() {
+    addTool([{ type: 'Feedback' }]);
+  }
+  function addHelp() {
+    addTool([{ type: 'Help' }]);
+  }
+  function addPrint() {
+    addTool([{ type: 'Print' }]);
+  }
+  function addSetting() {
+    addTool([{ type: 'Settings' }]);
+  }
   return (
     <div className="toolbar">
       <div className=" rows">
@@ -31,20 +49,20 @@ export default function ToolBar(props) {
         <button onClick={addWorldBuilder}>
           <i className="bi bi-tree" />
         </button>
-        <button>
+        <button onClick={addCharacter}>
           <i className="bi bi-people" />
         </button>
-        <button>
+        <button onClick={addOutline}>
           <i className="bi bi-snow3" />
         </button>
-        <button>
+        <button onClick={addFeedback}>
           <i className="bi bi-arrow-repeat" />
         </button>
-        <button>
-          <i className="bi bi-lightbulb" />
+        <button onClick={addHelp}>
+          <i class="bi bi-question-diamond" />
           {/*This would be where users can ask questions and stuff*/}
         </button>
-        <button>
+        <button onClick={addPrint}>
           <i className="bi bi-printer" />
         </button>
       </div>
@@ -53,7 +71,7 @@ export default function ToolBar(props) {
         <button>
           <i className="bi bi-droplet-half" />
         </button>
-        <button>
+        <button onClick={addSetting}>
           <i className="bi bi-gear" />
         </button>
       </div>
