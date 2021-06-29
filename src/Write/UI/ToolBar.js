@@ -59,7 +59,7 @@ export default function ToolBar(props) {
           <i className="bi bi-arrow-repeat" />
         </button>
         <button onClick={addHelp}>
-          <i class="bi bi-question-diamond" />
+          <i className="bi bi-question-diamond" />
           {/*This would be where users can ask questions and stuff*/}
         </button>
         <button onClick={addPrint}>

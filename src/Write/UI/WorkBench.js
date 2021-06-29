@@ -9,6 +9,7 @@ import Outline from './Tools/Outline.js';
 import Worldbuilder from './Tools/Worldbuilder.js';
 import Print from './Tools/Print.js';
 import Settings from './Tools/Settings.js';
+import Help from './Tools/Help.js';
 //UI functions
 function toggle(value, set) {
   if (value == 0) {
@@ -57,6 +58,7 @@ const startState = [
   //{ type: 'Character' },
   //{ type: 'Outline' },
   //{ type: 'Feedback' },
+  //{ type: 'Help' }
   //{ type: 'Print'},
   //{ type: 'Settings' }
 ];
@@ -143,6 +145,11 @@ function Tab(props) {
     props.setList(newList);
     if (props.selected != props.order) {
       props.setSelect(0);
+      if (newList.length > 0) {
+        props.setTool(setWorkingTool(newList[0].type));
+      }
+    } else {
+      props.setSelect(props.order);
       if (newList.length > 0) {
         props.setTool(setWorkingTool(newList[0].type));
       }
