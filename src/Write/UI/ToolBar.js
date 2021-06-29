@@ -11,16 +11,13 @@ export default function ToolBar(props) {
     }
   }
   function addBookInfo() {
-    const newEditor = [{ type: 'BookInfo' }];
-    addTool(newEditor);
+    addTool([{ type: 'BookInfo' }]);
   }
   function addEditor() {
-    const newEditor = [{ type: 'Editor' }];
-    addTool(newEditor);
+    addTool([{ type: 'Editor' }]);
   }
   function addWorldBuilder() {
-    const newEditor = [{ type: 'Worldbuilder' }];
-    addTool(newEditor);
+    addTool([{ type: 'Worldbuilder' }]);
   }
   return (
     <div className="toolbar">
