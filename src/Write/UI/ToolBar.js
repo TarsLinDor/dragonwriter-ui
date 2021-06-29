@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './ToolBar.scss';
 export default function ToolBar(props) {
+  function addTool(Tool) {
+    if (!props.view) {
+      const newList = props.listA.concat(Tool);
+      props.setA(newList);
+    } else {
+      const newList = props.listB.concat(Tool);
+      props.setB(newList);
+    }
+  }
+  function addBookInfo() {
+    const newEditor = [{ type: 'BookInfo' }];
+    addTool(newEditor);
+  }
+  function addEditor() {
+    const newEditor = [{ type: 'Editor' }];
+    addTool(newEditor);
+  }
+  function addWorldBuilder() {
+    const newEditor = [{ type: 'Worldbuilder' }];
+    addTool(newEditor);
+  }
   return (
     <div className="toolbar">
       <div className=" rows">
-        <button>
+        <button onClick={addBookInfo}>
           <i className="bi bi-bookmark" />
         </button>
-        <button>
+        <button onClick={addEditor}>
           <i className="bi bi-vector-pen" />
         </button>
-        <button>
+        <button onClick={addWorldBuilder}>
           <i className="bi bi-tree" />
         </button>
         <button>

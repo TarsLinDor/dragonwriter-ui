@@ -86,7 +86,15 @@ export default function WorkBench(props) {
   if (view == 0) {
     return (
       <div className="Tools">
-        <ToolBar {...{ setA: setToolListA, setB: setToolListB, view: view }} />
+        <ToolBar
+          {...{
+            setA: setToolListA,
+            setB: setToolListB,
+            view: view,
+            listA: toolListA,
+            listB: toolListB
+          }}
+        />
         <div className="MainArea">
           <div className="TabBar">
             {listItemsA}
@@ -101,7 +109,15 @@ export default function WorkBench(props) {
   } else {
     return (
       <div className="Tools">
-        <ToolBar {...{ setA: setToolListA, setB: setToolListB, view: view }} />
+        <ToolBar
+          {...{
+            setA: setToolListA,
+            setB: setToolListB,
+            view: view,
+            listA: toolListA,
+            listB: toolListB
+          }}
+        />
         <div className="MainArea">
           <div className="TabBar">{listItemsA}</div>
           {ToolA}
@@ -125,9 +141,11 @@ function Tab(props) {
   function deleteTab() {
     const newList = remove(props.list, props.order);
     props.setList(newList);
-    props.setSelect(0);
-    if (newList.length > 0) {
-      props.setTool(setWorkingTool(newList[0].type));
+    if (props.selected != props.order) {
+      props.setSelect(0);
+      if (newList.length > 0) {
+        props.setTool(setWorkingTool(newList[0].type));
+      }
     }
   }
 
