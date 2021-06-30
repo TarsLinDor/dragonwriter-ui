@@ -14,7 +14,7 @@ export default function BooksMenu(props) {
   var listItems = books.map((books, index) => (
     <Book
       {...{
-        key: books.Id,
+        key: index,
         title: books.title,
         setBookTitle: props.setBookTitle,
         setBookId: props.setBookId,
