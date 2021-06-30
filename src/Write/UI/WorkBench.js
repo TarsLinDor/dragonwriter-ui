@@ -10,7 +10,7 @@ import Worldbuilder from './Tools/Worldbuilder.js';
 import Print from './Tools/Print.js';
 import Settings from './Tools/Settings.js';
 import Help from './Tools/Help.js';
-import {DndContext} from '@dnd-kit/core';
+import { DndContext } from '@dnd-kit/core';
 //UI functions
 function toggle(value, set) {
   if (value == 0) {
@@ -216,6 +216,8 @@ function setIcon(icon) {
       return 'bi bi-snow3';
     case 'Feedback':
       return 'bi bi-arrow-repeat';
+    case 'Help':
+      return 'bi bi-question-diamond';
     case 'Print':
       return 'bi bi-printer';
     case 'Settings':
@@ -268,6 +270,10 @@ function setWorkingTool(view, location, setLocation) {
         <Feedback
           {...{ key: n, location: location, setLocation: setLocation }}
         />
+      );
+    case 'Help':
+      return (
+        <Help {...{ key: n, location: location, setLocation: setLocation }} />
       );
     case 'Print':
       return (
