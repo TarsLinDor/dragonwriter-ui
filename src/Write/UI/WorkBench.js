@@ -117,7 +117,7 @@ export default function WorkBench(props) {
     } else {
       const Full = full(toolListA, toolListB);
       setToolListA(Full);
-      setToolListB([]);
+      setToolListB([{ type: 'BookInfo' }]);
     }
   }
 
