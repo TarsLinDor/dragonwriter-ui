@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './NavBar.scss';
 function toggle(value, set) {
   if (value == 0) {
     set(1);
@@ -10,29 +9,29 @@ function toggle(value, set) {
 //style:
 const style = {
   Navbar: {
-    height: '1.75em',
-    padding: '0.05em',
+    height: 1.75 + 'em',
+    padding: 0.05 + 'em',
     backgroundColor: 'var(--C2)',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
     boxShadow: '0 4px 7px 0 rgba(0, 0, 0, 0.25)',
-    zIndex: '1'
+    zIndex: 1
   },
   leftItems: { display: 'flex', alignItems: 'center' },
   h1: {
     color: 'var(--menuFontColor)',
     fontWeight: 'bold',
-    fontSize: '1.1em',
+    fontSize: 1.1 + 'em',
     padding: '0.1em 0.1em 0 0.25em',
-    margin: '0',
+    margin: 0,
     cursor: 'default'
   },
   h2: {
     color: 'var(--C3)',
     fontWeight: 'normal',
-    fontSize: '1em',
+    fontSize: 1 + 'em',
     padding: '0 0.5em 0 0.25em',
     margin: '0',
     whiteSpace: 'nowrap'
