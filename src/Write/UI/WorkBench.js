@@ -10,8 +10,8 @@ import Worldbuilder from './Tools/Worldbuilder.js';
 import Print from './Tools/Print.js';
 import Settings from './Tools/Settings.js';
 import Help from './Tools/Help.js';
-import { DndContext } from '@dnd-kit/core';
-import SortableItem from './SortableItem.js';
+import { Sortable } from './sortable.js';
+
 //UI functions
 function toggle(value, set) {
   if (value == 0) {
@@ -139,7 +139,11 @@ export default function WorkBench(props) {
         />
         <div className="MainArea">
           <div className="TabBar">
-            {listItemsA}
+            <Sortable
+              {...{ direction: 'h', items: toolListA, setItems: setToolListA }}
+            >
+              {listItemsA}
+            </Sortable>
             <button>
               <i onClick={setView} className="bi bi-layout-split" />
             </button>
