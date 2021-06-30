@@ -53,26 +53,60 @@ function add(list, item) {
   return NewList;
 }
 //UI Specific Functions
-const startState = [
-  { type: 'BookInfo' }
-  //{ type: 'Editor' },
-  //{ type: 'Worldbuilder' },
-  //{ type: 'Character' },
-  //{ type: 'Outline' },
-  //{ type: 'Feedback' },
-  //{ type: 'Help' }
-  //{ type: 'Print'},
-  //{ type: 'Settings' }
-];
+//const startState = [
+//  { type: 'BookInfo' }
+//{ type: 'Editor' },
+//{ type: 'Worldbuilder' },
+//{ type: 'Character' },
+//{ type: 'Outline' },
+//{ type: 'Feedback' },
+//{ type: 'Help' }
+//{ type: 'Print'},
+//{ type: 'Settings' }
+//];
+
+function Tablist(view, setview) {
+  const startState = [{ type: 'BookInfo' }];
+  const [list, setList] = useState(startState);
+  const [Tool, setTool] = useState(setWorkingTool(list[0]));
+  const [selected, setSelect] = useState(0);
+  const TabItems = list.map((ListItem, index) => (
+    <Tab
+      {...{
+        key: index,
+        order: index,
+        type: ListItem,
+        list: list,
+        setList: setList,
+        setTool: setTool,
+        setSelect: setSelect,
+        selected: selected,
+        view: view,
+        setview: setview
+      }}
+    />
+  ));
+  return [list, setList, TabItems, Tool, setTool, setSelect];
+}
 
 export default function WorkBench(props) {
-  //This is the MainArea where all the tools are located.
-  const [toolListA, setToolListA] = useState(startState);
-  const [toolListB, setToolListB] = useState([]);
-  //TabBar and ToolView
   const [view, setview] = useState(0); //used to set the view to 1 tool or 2.
-  const [listItemsA, ToolA] = Tablist(toolListA, setToolListA); //Defines what is in Tab bar A and the selected tool in that window.
-  const [listItemsB, ToolB] = Tablist(toolListB, setToolListB); //Defines what is in Tab bar B and the selected tool in that window.
+  const [
+    toolListA,
+    setToolListA,
+    listItemsA,
+    ToolA,
+    setToolA,
+    setSelectA
+  ] = Tablist(view, setview); //Defines what is in Tab bar A and the selected tool in that window.
+  const [
+    toolListB,
+    setToolListB,
+    listItemsB,
+    ToolB,
+    setToolB,
+    setSelectB
+  ] = Tablist(view, setview); //Defines what is in Tab bar B and the selected tool in that window.
 
   function setView() {
     toggle(view, setview);
@@ -96,7 +130,11 @@ export default function WorkBench(props) {
             setB: setToolListB,
             view: view,
             listA: toolListA,
-            listB: toolListB
+            listB: toolListB,
+            setselectA: setSelectA,
+            setselectB: setSelectB,
+            setToolA: setToolA,
+            setToolB: setToolB
           }}
         />
         <div className="MainArea">
@@ -119,7 +157,11 @@ export default function WorkBench(props) {
             setB: setToolListB,
             view: view,
             listA: toolListA,
-            listB: toolListB
+            listB: toolListB,
+            setselectA: setSelectA,
+            setselectB: setSelectB,
+            setToolA: setToolA,
+            setToolB: setToolB
           }}
         />
         <div className="MainArea">
@@ -148,13 +190,18 @@ function Tab(props) {
     if (props.selected != props.order) {
       props.setSelect(0);
       if (newList.length > 0) {
-        props.setTool(setWorkingTool(newList[0].type));
+        props.setTool(setWorkingTool(newList[0]));
       }
     } else {
       props.setSelect(props.order);
       if (newList.length > 0) {
-        props.setTool(setWorkingTool(newList[0].type));
+        props.setTool(setWorkingTool(newList[0]));
       }
+    }
+    if (props.side && newList.length < 1) {
+      props.setview(0);
+    } else if (!props.side && newList.length < 1) {
+      props.setList(newList);
     }
   }
 
@@ -168,43 +215,21 @@ function Tab(props) {
   } else {
     var sel = 'Tab notSelected';
   }
+
   return (
-    <SortableItem className={sel}>
+    <div className={sel}>
       <a onClick={select}>
         <i className={setIcon(props.type)} />
         <p>{props.order /*location*/}</p>
       </a>
       <i className="bi bi-x" onClick={deleteTab} />
-    </SortableItem>
+    </div>
   );
 }
 
-function Tablist(List, setList) {
-  const [selected, setSelect] = useState(0);
-  const [Tool, setTool] = useState([<BookInfo />]);
-  const [location, setLocation] = useState([]);
-  const TabItems = List.map((ListItem, index) => (
-    <Tab
-      {...{
-        key: index,
-        order: index,
-        type: ListItem.type,
-        location: location,
-        setLocation: setLocation,
-        setList: setList,
-        setTool: setTool,
-        setSelect: setSelect,
-        selected: selected,
-        list: List
-      }}
-    />
-  ));
-  return [TabItems, Tool];
-}
-
-function setIcon(icon) {
+function setIcon(item) {
   // Sets Which icon is visible in the tab.
-  switch (icon) {
+  switch (item.type) {
     case 'BookInfo':
       return 'bi bi-bookmark';
     case 'Editor':
@@ -228,58 +253,29 @@ function setIcon(icon) {
   }
 }
 
-function setWorkingTool(view, location, setLocation) {
+export function setWorkingTool(tool) {
   var d = new Date();
   var n = d.getTime();
-  switch (view) {
+  var props = { key: n /*location: tool.location*/ };
+  switch (tool.type) {
     default:
-      return (
-        <BookInfo
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <BookInfo {...{ props }} />;
     case 'BookInfo':
-      return (
-        <BookInfo
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <BookInfo {...{ props }} />;
     case 'Editor':
-      return (
-        <Editor {...{ key: n, location: location, setLocation: setLocation }} />
-      );
+      return <Editor {...{ props }} />;
     case 'Character':
-      return (
-        <Character
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <Character {...{ props }} />;
     case 'Worldbuilder':
-      return (
-        <Worldbuilder
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <Worldbuilder {...{ props }} />;
     case 'Outline':
-      return (
-        <Outline
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <Outline {...{ props }} />;
     case 'Feedback':
-      return (
-        <Feedback
-          {...{ key: n, location: location, setLocation: setLocation }}
-        />
-      );
+      return <Feedback {...{ props }} />;
     case 'Help':
-      return (
-        <Help {...{ key: n, location: location, setLocation: setLocation }} />
-      );
+      return <Help {...{ props }} />;
     case 'Print':
-      return (
-        <Print {...{ key: n, location: location, setLocation: setLocation }} />
-      );
+      return <Print {...{ props }} />;
     case 'Settings':
       return <Settings />;
   }

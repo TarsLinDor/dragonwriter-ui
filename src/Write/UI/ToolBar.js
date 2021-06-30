@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { setWorkingTool } from './WorkBench.js';
 import './ToolBar.scss';
 export default function ToolBar(props) {
   function addTool(Tool) {
     if (!props.view) {
       const newList = props.listA.concat(Tool);
       props.setA(newList);
+      props.setselectA(newList.length - 1);
+      props.setToolA(setWorkingTool(newList[newList.length - 1]));
     } else {
       const newList = props.listB.concat(Tool);
       props.setB(newList);
+      props.setselectB(newList.length - 1);
+      props.setToolB(setWorkingTool(newList[newList.length - 1]));
     }
   }
   function addBookInfo() {
