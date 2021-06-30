@@ -11,6 +11,7 @@ import Print from './Tools/Print.js';
 import Settings from './Tools/Settings.js';
 import Help from './Tools/Help.js';
 import { DndContext } from '@dnd-kit/core';
+import SortableItem from './SortableItem.js';
 //UI functions
 function toggle(value, set) {
   if (value == 0) {
@@ -168,13 +169,13 @@ function Tab(props) {
     var sel = 'Tab notSelected';
   }
   return (
-    <div className={sel}>
+    <SortableItem className={sel}>
       <a onClick={select}>
         <i className={setIcon(props.type)} />
         <p>{props.order /*location*/}</p>
       </a>
       <i className="bi bi-x" onClick={deleteTab} />
-    </div>
+    </SortableItem>
   );
 }
 
