@@ -66,7 +66,7 @@ function add(list, item) {
 //];
 
 function Tablist(view, setview) {
-  const startState = [{ type: 'BookInfo' }];
+  const startState = [{ type: 'BookInfo' }, { type: 'Editor' }];
   const [list, setList] = useState(startState);
   const [Tool, setTool] = useState(setWorkingTool(list[0]));
   const [selected, setSelect] = useState(0);
@@ -139,11 +139,11 @@ export default function WorkBench(props) {
         />
         <div className="MainArea">
           <div className="TabBar">
-            <Sortable
+            {/*<Sortable
               {...{ direction: 'h', items: toolListA, setItems: setToolListA }}
-            >
-              {listItemsA}
-            </Sortable>
+            >*/}
+            {listItemsA}
+            {/*</Sortable>*/}
             <button>
               <i onClick={setView} className="bi bi-layout-split" />
             </button>
