@@ -31,3 +31,14 @@
   margin: 0;
   max-height: 1049px;
 }
+.rows {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.p1 {
+  padding: 1em;
+}
