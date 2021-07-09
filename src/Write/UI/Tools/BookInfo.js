@@ -35,11 +35,12 @@ export default function BookInfo(props) {
           <li>Example: YA vs Adult vs Children</li>
         </ul>
         </li>
-        <li>Forward, about the Author, ect.
+        {/*<li>Forward, about the Author, ect.
         <ul>
           <li>This seems like the right place for this but it might be better to put this in the editor tab?</li>
         </ul>
-        </li>
+        </li>*/}
+        <li>Synopsis</li>
       </ol>
     </div>
   );
