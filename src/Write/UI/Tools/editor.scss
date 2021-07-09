@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 body {
   padding: 0;
   margin: 0;
@@ -12,118 +17,153 @@ body {
   right: 0;
   max-height: 100vh;
 }
+:root {
+  --background: white; //rgb(40, 40, 40); //white
+  --border: rgb(240, 240, 240); //rgb(60, 60, 60); //whitesmoke
+  --color: black; //rgb(180, 180, 180); //black
+}
 
 ::-webkit-scrollbar {
   display: none;
 }
-
-.Editor {
-  background-color: white;
-  position: relative;
-  flex-direction: column;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  .COL-3 {
-    display: flex;
-    flex-direction: row;
-  }
-  .SlateToolBar {
-    background-color: white;
-    display: flex;
-    height: 1.75em;
-    justify-content: space-between;
-    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.25);
-    align-items: center;
-    border-bottom: solid 1px lightgrey;
-    //flex-grow: 1;
-    z-index: 2;
-    p {
-      font-family: Lato;
-      margin: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    button {
-      background-color: inherit;
-      font-size: 1em;
-      border: none;
-      outline: none;
-    }
-    button:hover {
-      color: rgb(0, 110, 255);
-    }
-  }
-  .Mainarea {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    overflow-y: auto;
-    background-color: whitesmoke;
-    max-height: 95.5vh;
-    margin: auto;
-    z-index: 0;
-  }
-  .area {
-    position: relative;
+.Tools {
+  background-color: var(--background);
+  color: var(--color);
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  .tableofcontents {
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    background-color: whitesmoke;
-    max-height: 91.5vh;
-    margin: auto;
-    z-index: 0;
-  }
-  .Title {
-    text-align: center;
-    font-size: 2em;
-    h1 {
-      font-weight: normal;
+    border-right: solid 1px var(--border);
+    min-width: 8.5em;
+    max-width: 15em;
+    color: inherit;
+    //width: 20%;
+    font-family: Lato;
+    .leftheader {
+      display: flex;
+      height: 1.25em;
+      padding: 0.25em;
+      border-bottom: solid 1px var(--border);
+      align-items: center;
+      justify-content: left;
+      font-family: Lato;
+      color: inherit;
+    }
+    .ContentItem {
+      padding: 0.15em 0.5em;
     }
   }
-  .page {
+  .DraftHistory {
+    display: flex;
+    color: inherit;
+    flex-direction: column;
+    border-left: solid 1px var(--border);
+    min-width: 3em;
+    //justify-content: center;
+    align-items: center;
+    font-family: Lato;
+    .rightheader {
+      display: flex;
+      height: 1.25em;
+      padding: 0.25em 0.5em;
+      border-bottom: solid 1px var(--border);
+      align-items: center;
+      justify-content: center;
+      font-family: Lato;
+      color: inherit;
+    }
+  }
+  .Editor {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    margin: auto;
-    margin-top: 0.5em;
-    padding: 5em 5em;
-    min-height: 100vh;
-    max-width: 37em;
-    z-index: 1;
-    background-color: white;
-    font-family: 'Alegreya', serif;
-    //font-family: 'Noto Serif', serif;
-    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.05);
-    p {
-    }
-  }
-  .note {
-    background-color: rgb(210, 250, 213);
-    margin: 0.5em;
-    padding: 0.25em;
-    box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.25);
-  }
-  .tableofcontents {
-    //margin: .5em;
-    //border-radius: .25em;
-    border-right: solid 1px lightgrey;
-    //position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    min-width: 175px;
-    background-color: white;
-    z-index: 3;
-  }
-}
+    right: 0;
+    color: inherit;
+    .SlateToolBar {
+      display: flex;
+      padding: 0.25em;
+      justify-content: space-between;
+      border-bottom: solid 1px var(--border);
+      align-items: center;
+      flex-grow: 1;
+      z-index: 2;
+      color: inherit;
+      p {
+        font-family: Lato;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: inherit;
+      }
+      button {
+        background-color: inherit;
+        font-size: 1em;
+        border: none;
+        outline: none;
+        color: inherit;
+      }
+      button:hover {
+        color: rgb(0, 110, 255);
+      }
+    }
+    .area {
+      position: relative;
+      display: block;
+      overflow-y: auto;
+      background-color: inherit;
+      max-height: 97.5vh;
+      color: inherit;
+    }
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
-.column {
-  display: flex;
-  flex-direction: column;
+    .page {
+      margin: auto;
+      padding: 5em 5%;
+      min-height: 100vh;
+      max-width: 35em;
+      z-index: 1;
+      color: inherit;
+      background-color: inherit;
+      font-family: 'Alegreya', serif;
+      .Title {
+        text-align: center;
+        h1 {
+          margin: 0px;
+          padding: 0px;
+          font-size: 4em;
+          font-weight: normal;
+        }
+        h3 {
+          padding: 0px;
+          font-size: 1.35em;
+        }
+      }
+      p.Default {
+        text-align: left;
+        text-indent: 1.5em;
+        margin: 0px;
+        padding: 0.25px;
+      }
+      p.Center {
+        text-align: center;
+        margin: 0px;
+        padding: 0.25px;
+      }
+      p.Right {
+        text-align: right;
+        margin: 0px;
+        padding: 0.25px;
+      }
+    }
+    .note {
+      background-color: rgb(210, 250, 213);
+      margin: 0.5em;
+      padding: 0.25em;
+      box-shadow: 0 4px 7px 0 rgb(0, 0, 0, 0.25);
+    }
+  }
 }

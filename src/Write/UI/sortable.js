@@ -40,7 +40,7 @@ export function SortableItem(props) {
   );
 }
 
-export function Sortable(props) {
+export default function Sortable(props) {
   if( props.direction=='h' ||props.direction=='H'){
     var direction = horizontalListSortingStrategy;
   }
